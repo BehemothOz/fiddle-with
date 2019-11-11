@@ -1,10 +1,6 @@
 import React from 'react';
-import Auth from './Auth';
+import Auth from './templates/Auth';
 
-function App() {
-    return (
-        <Auth />
-    );
-}
+const App = () => <Auth />;
 
 export default App;
