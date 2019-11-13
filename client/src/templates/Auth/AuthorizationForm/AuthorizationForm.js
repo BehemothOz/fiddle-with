@@ -27,6 +27,7 @@ const AuthorizationForm = () => {
                     Log in
                 </Button>
                 <Link to="/registration" className={styles.link}>Registration</Link>
+                <Link to="/home" className={styles.link}>temp home</Link>
             </div>
         </Form>
     )
