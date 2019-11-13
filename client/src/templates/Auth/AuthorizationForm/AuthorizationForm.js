@@ -11,22 +11,22 @@ const AuthorizationForm = () => {
         <Form onSubmit={handleSubmit}>
             <Form.Item>
                 <Input
-                    prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                    prefix={<Icon type="user" className={styles.iconInput} />}
                     placeholder="Username"
                 />
             </Form.Item>
             <Form.Item>
-                <Input
-                    prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                <Input.Password
+                    prefix={<Icon type="lock" className={styles.iconInput} />}
                     type="password"
                     placeholder="Password"
                 />
             </Form.Item>
-            <div className={styles.actions}>
+            <div className={styles.buttons}>
                 <Button type="primary" htmlType="submit" className={styles.loginButton} block>
                     Log in
                 </Button>
-                <Link to="/registration">Registration</Link>
+                <Link to="/registration" className={styles.link}>Registration</Link>
             </div>
         </Form>
     )

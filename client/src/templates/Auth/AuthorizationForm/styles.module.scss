@@ -1,11 +1,1 @@
-@import '../../../assets/styles/variables.scss';
-
-.actions {
-    & > .loginButton {
-        margin-bottom: 8px;
-    }
-}
-
-.loginButton {
-    text-transform: uppercase;
-}
+@import '../../../assets/styles/form.scss';

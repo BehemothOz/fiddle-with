@@ -11,33 +11,33 @@ const RegistarionForm = () => {
         <Form onSubmit={handleSubmit}>
             <Form.Item hasFeedback>
                 <Input
-                    prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                    prefix={<Icon type="user" className={styles.iconInput} />}
                     placeholder="Username"
                 />
             </Form.Item>
             <Form.Item>
                 <Input
-                    prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                    prefix={<Icon type="mail" className={styles.iconInput} />}
                     placeholder="Email"
                 />
             </Form.Item>
             <Form.Item>
                 <Input
-                    prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                    prefix={<Icon type="lock" className={styles.iconInput} />}
                     placeholder="Password"
                 />
             </Form.Item>
             <Form.Item>
                 <Input
-                    prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                    prefix={<Icon type="unlock" className={styles.iconInput} />}
                     placeholder="Re-password"
                 />
             </Form.Item>
-            <div className={styles.actions}>
+            <div className={styles.buttons}>
                 <Button type="primary" htmlType="submit" className={styles.loginButton} block>
                     Registration
                 </Button>
-                <Link to="/">Cancel</Link>
+                <Link to="/" className={styles.link}>Cancel</Link>
             </div>
         </Form>
     )
