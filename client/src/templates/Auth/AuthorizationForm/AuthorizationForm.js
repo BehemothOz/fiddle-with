@@ -7,6 +7,16 @@ import styles from './styles.module.scss';
 const AuthorizationForm = () => {
     const handleSubmit = () => {};
 
+    const post = () => {
+        fetch('http://localhost:4000/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify({ name: 'sdfsdf' })
+        }).then(r => console.log(r))
+    }
+
     return (
         <Form onSubmit={handleSubmit}>
             <Form.Item>
@@ -24,6 +34,9 @@ const AuthorizationForm = () => {
             </Form.Item>
             <div className={styles.buttons}>
                 <Button type="primary" htmlType="submit" className={styles.loginButton} block>
+                    Log in
+                </Button>
+                <Button type="primary" onClick={post} className={styles.loginButton} block>
                     Log in
                 </Button>
                 <Link to="/registration" className={styles.link}>Registration</Link>
