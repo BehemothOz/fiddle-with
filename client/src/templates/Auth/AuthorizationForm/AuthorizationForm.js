@@ -8,12 +8,12 @@ const AuthorizationForm = () => {
     const handleSubmit = () => {};
 
     const post = () => {
-        fetch('http://localhost:4444/reg', {
+        fetch('http://localhost:4444/registration', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'
             },
-            body: JSON.stringify({ name: 'sdfsdf' })
+            body: JSON.stringify({ name: 'Name', email: 'email@mail.com', password: '1234' })
         }).then(r => console.log(r))
     }
 
