@@ -8,7 +8,7 @@ const AuthorizationForm = () => {
     const handleSubmit = () => {};
 
     const post = () => {
-        fetch('http://localhost:4000/login', {
+        fetch('http://localhost:4444/reg', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'

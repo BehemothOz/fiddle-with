@@ -1,16 +1,36 @@
+require('dotenv').config();
+
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const mongoose = require('mongoose');
 
-app.use(cors());
+const registrationRouter = require('./routes/registration');
 
-app.get('/', function (_, res) {
-    res.send('Hello World!');
+// Connect to DB
+mongoose.connect(process.env.DATABASE_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true
 });
 
-app.post('/login', async (req, res) => {
-    res.status(200).send('ok')
-})
+const db = mongoose.connection;
+
+db.on('error', error => console.error(error));
+db.once('open', () => console.log('Connected to DB'));
+
+app.use(cors());
+app.use(express.json());
+
+// app.get('/', function (_, res) {
+//     res.send('Hello World!');
+// });
+
+// app.post('/login', async (req, res) => {
+//     res.status(200).send('ok')
+// })
+
+app.use('/reg', registrationRouter);
 
 const port = process.env.PORT || 4000;
 app.listen(port, () => console.log(`Server up and running on port ${port}`));
