@@ -22,15 +22,8 @@ db.once('open', () => console.log('Connected to DB'));
 app.use(cors());
 app.use(express.json());
 
-// app.get('/', function (_, res) {
-//     res.send('Hello World!');
-// });
-
-// app.post('/login', async (req, res) => {
-//     res.status(200).send('ok')
-// })
-
-app.use('/reg', registrationRouter);
+// Routes
+app.use('/registration', registrationRouter);
 
 const port = process.env.PORT || 4000;
 app.listen(port, () => console.log(`Server up and running on port ${port}`));
