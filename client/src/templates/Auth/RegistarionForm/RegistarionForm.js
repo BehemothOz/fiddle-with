@@ -1,46 +1,23 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Form, Icon, Input } from 'antd';
-import { Button } from '../../../shared';
-import styles from './styles.module.scss';
+import { withFormik } from 'formik';
+import View from './View';
 
-const RegistarionForm = () => {
-    const handleSubmit = () => {};
+const mapPropsToValues = () => ({
+    username: '',
+    email: '',
+    password: ''
+});
 
-    return (
-        <Form onSubmit={handleSubmit}>
-            <Form.Item hasFeedback>
-                <Input
-                    prefix={<Icon type="user" className={styles.iconInput} />}
-                    placeholder="Username"
-                />
-            </Form.Item>
-            <Form.Item>
-                <Input
-                    prefix={<Icon type="mail" className={styles.iconInput} />}
-                    placeholder="Email"
-                />
-            </Form.Item>
-            <Form.Item>
-                <Input
-                    prefix={<Icon type="lock" className={styles.iconInput} />}
-                    placeholder="Password"
-                />
-            </Form.Item>
-            <Form.Item>
-                <Input
-                    prefix={<Icon type="unlock" className={styles.iconInput} />}
-                    placeholder="Re-password"
-                />
-            </Form.Item>
-            <div className={styles.buttons}>
-                <Button type="primary" htmlType="submit" className={styles.loginButton} block>
-                    Registration
-                </Button>
-                <Link to="/" className={styles.link}>Cancel</Link>
-            </div>
-        </Form>
-    )
-}
+const handleSubmit = (values, bag) => {
+    setTimeout(() => {
+        console.info(JSON.stringify(values, null, 2));
+        bag.setSubmitting(false);
+    }, 1000);
+};
 
-export default RegistarionForm;
+const displayName = 'RegistrationForm';
+
+export default withFormik({
+    mapPropsToValues,
+    handleSubmit,
+    displayName
+})(View);
