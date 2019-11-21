@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Form, Icon } from 'antd';
 import { Button, TextField } from '../../../shared';
+import f from '../../../api/index'
 import styles from './styles.module.scss';
 
 const AuthorizationForm = props => {
