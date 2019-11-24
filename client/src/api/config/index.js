@@ -1,5 +1,5 @@
 const config = {
-    url: 'http://localhost:4444/',
+    url: 'http://localhost:4444',
     timeout: 30000
 }
 

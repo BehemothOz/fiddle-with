@@ -1,3 +1,5 @@
+import config from './config';
+
 /*
     Headers:
     - content-type
@@ -5,7 +7,7 @@
 */
 
 // for patch + '/3'
-const url = 'https://jsonplaceholder.typicode.com/users';
+// const url = 'https://jsonplaceholder.typicode.com/users';
 
 // fetch(url, [options])
 
@@ -22,10 +24,14 @@ const url = 'https://jsonplaceholder.typicode.com/users';
 const methods = ['GET', 'POST', 'PATCH', 'DELETE'];
 
 const create = method => (url, options = {}) => {
-    return fetch(url, {
+    console.log(config, url)
+    return fetch(`${config.url}${url}`, {
         method,
+        headers: {
+            "Content-Type": "application/json; charset=utf-8"
+        },
         ...options
-    }).then(res => res.json()).then(json => console.log(`method: ${method}`, json));
+    })//.then(res => res.json()).then(json => console.log(`method: ${method}`, json));
 }
 
 const request = () => {
