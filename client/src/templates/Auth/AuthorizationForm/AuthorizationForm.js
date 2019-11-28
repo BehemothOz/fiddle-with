@@ -1,4 +1,5 @@
 import { withFormik } from 'formik';
+import api from '../../../api';
 import View from './View';
 
 const mapPropsToValues = () => ({
@@ -7,10 +8,9 @@ const mapPropsToValues = () => ({
 });
 
 const handleSubmit = (values, bag) => {
-    setTimeout(() => {
-        console.info(JSON.stringify(values, null, 2));
-        bag.setSubmitting(false);
-    }, 1000);
+    api.post('/login', {
+        body: JSON.stringify(values)
+    });
 };
 
 const displayName = 'AuthorizationForm';
