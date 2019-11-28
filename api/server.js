@@ -6,6 +6,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 
 const registrationRouter = require('./routes/registration');
+const loginRouter = require('./routes/login');
 
 // Connect to DB
 mongoose.connect(process.env.DATABASE_URL, {
@@ -24,6 +25,7 @@ app.use(express.json());
 
 // Routes
 app.use('/registration', registrationRouter);
+app.use('/login', loginRouter);
 
 const port = process.env.PORT || 4000;
 app.listen(port, () => console.log(`Server up and running on port ${port}`));
