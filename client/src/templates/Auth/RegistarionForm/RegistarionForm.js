@@ -1,5 +1,6 @@
 import { withFormik } from 'formik';
 import api from '../../../api';
+import validationSchema from './validation';
 import View from './View';
 
 const mapPropsToValues = () => ({
@@ -26,5 +27,6 @@ const displayName = 'RegistrationForm';
 export default withFormik({
     mapPropsToValues,
     handleSubmit,
+    validationSchema,
     displayName
 })(View);
