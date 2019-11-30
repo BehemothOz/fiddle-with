@@ -1,19 +1,20 @@
 const mongoose = require('mongoose');
+const [ USERNAME, EMAIL, PASSWORD, DATE ] = require('../constants/auth');
 
 const userSchema = mongoose.Schema({
-    name: {
+    [USERNAME]: {
         type: String,
         require: true
     },
-    email: {
+    [PASSWORD]: {
         type: String,
         require: true
     },
-    password: {
+    [EMAIL]: {
         type: String,
         require: true
     },
-    date: {
+    [DATE]: {
         type: Date,
         default: Date.now
     }
