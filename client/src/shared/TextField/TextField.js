@@ -4,7 +4,7 @@ import { Input } from 'antd';
 
 const TextField = props => {
     const { name, ...rest } = props;
-    const [field, meta] = useField(props.name);
+    const [field] = useField(props.name);
 
     return <Input {...field} {...rest} />
 }
