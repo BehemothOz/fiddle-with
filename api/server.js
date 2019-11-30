@@ -8,7 +8,8 @@ const mongoose = require('mongoose');
 const registrationRouter = require('./routes/registration');
 const loginRouter = require('./routes/login');
 
-const errorHandler = require('./errors/index');
+const validationHandlerError = require('./errors/validationHandlerError');
+const globalHandlerError = require('./errors/globalHandlerError');
 
 // Connect to DB
 mongoose.connect(process.env.DATABASE_URL, {
@@ -29,8 +30,9 @@ app.use(express.json());
 app.use('/registration', registrationRouter);
 app.use('/login', loginRouter);
 
-// Global error handler
-app.use(errorHandler);
+// Validation and global error handlers
+app.use(validationHandlerError);
+app.use(globalHandlerError);
 
 const port = process.env.PORT || 4000;
 app.listen(port, () => console.log(`Server up and running on port ${port}`));

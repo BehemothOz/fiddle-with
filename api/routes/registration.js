@@ -7,7 +7,7 @@ const [ USERNAME, EMAIL, PASSWORD ] = require('../constants/auth');
 router.post('/', async (req, res, next) => {
     // Validate the data
     const { error } = validateRegistration(req.body);
-    if (error) return next({ status: 400, type: 'validation', body: error });
+    if (error) return next({ type: 'validation', body: error });
 
     const { name, email, password } = req.body;
 
