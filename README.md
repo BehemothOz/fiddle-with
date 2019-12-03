@@ -1,1 +1,4 @@
 TODO: description
+
+`/api`
+`/client`
