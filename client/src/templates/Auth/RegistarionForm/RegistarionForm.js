@@ -10,16 +10,9 @@ const mapPropsToValues = () => ({
 });
 
 const handleSubmit = (values, bag) => {
-    console.log(api)
-
     api.post('/registration', {
         body: JSON.stringify(values)
     });
-
-    // setTimeout(() => {
-    //     console.info(JSON.stringify(values, null, 2));
-    //     bag.setSubmitting(false);
-    // }, 0);
 };
 
 const displayName = 'RegistrationForm';
