@@ -1,4 +1,4 @@
 TODO: description
 
-`/api`
+`/api` -> `npm install` -> `npm start`
 `/client`
