@@ -11,5 +11,15 @@ const validateRegistration = data => {
     return schema.validate(data, { abortEarly: false });
 }
 
+const validateAuthorization = data => {
+    const schema = Joi.object({
+        [EMAIL]: Joi.string().trim().email().required(),
+        [PASSWORD]: Joi.string().trim().required()
+    })
+
+    return schema.validate(data, { abortEarly: false });
+}
+
 module.exports = validateRegistration;
+module.exports = validateAuthorization;
 
