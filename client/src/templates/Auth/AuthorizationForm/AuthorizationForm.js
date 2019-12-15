@@ -1,11 +1,12 @@
 import { withFormik } from 'formik';
 import api from '../../../api';
 import validationSchema from './validation';
+import { EMAIL, PASSWORD } from '../../../constants/auth';
 import View from './View';
 
 const mapPropsToValues = () => ({
-    email: '',
-    password: ''
+    [EMAIL]: '',
+    [PASSWORD]: ''
 });
 
 const handleSubmit = (values, bag) => {
