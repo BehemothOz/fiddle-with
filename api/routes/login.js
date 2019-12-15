@@ -7,7 +7,7 @@ router.post('/', async (req, res, next) => {
     try {
         // Validate the data
         const { error } = validateAuthorization(req.body);
-        if (error) return next({ status: 400, body: 'Email or Password invalid' });
+        if (error) return next({ status: 400, body: 'Email or Password is wrong' });
 
         // Checking if the user is already in the database
         const existUser = await User.findOne({ email: req.body.email });
@@ -15,7 +15,7 @@ router.post('/', async (req, res, next) => {
 
         // TODO: add validation password
 
-        
+
 
         res.status(200).json({ status: 'ok' });
     } catch (error) {
