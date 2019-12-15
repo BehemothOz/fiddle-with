@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
-const validateRegistration = require('./validation');
+const { validateRegistration } = require('./validation');
 const [ USERNAME, EMAIL, PASSWORD ] = require('../constants/auth');
 
 router.post('/', async (req, res, next) => {

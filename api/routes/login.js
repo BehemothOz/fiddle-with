@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 
 const router = express.Router();
 const User = require('../models/user');
-const validateAuthorization = require('./validation');
+const { validateAuthorization } = require('./validation');
 const [ _, EMAIL ] = require('../constants/auth');
 
 router.post('/', async (req, res, next) => {
