@@ -1,5 +1,5 @@
 TODO: description
 
-`/api` -> `npm install` -> `npm start`
+`/api` -> `npm install` -> `npm run dev`
 
-`/client`
+`/client` -> `npm install` -> `npm start`
