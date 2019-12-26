@@ -8,7 +8,8 @@ const style = {
 }
 
 const Span = () => {
-    return <span style={style}>Span</span>
+    const handleClick = () => console.log('span');
+    return <span role="button" onClick={handleClick} style={style}>Span</span>
 }
 
 export default Span;
