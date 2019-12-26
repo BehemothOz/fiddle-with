@@ -1,5 +1,8 @@
 import React from 'react';
 import { Spin } from 'antd';
+import Div from '../components/Div';
+import P from '../components/P';
+import Span from '../components/Span';
 
 const initialState = {
     data: { count: 0 },
@@ -55,6 +58,13 @@ const Home = () => {
             <button onClick={click} style={{ marginRight: 10 }}>Set Name 'Ivan'</button>
             {fetching && <Spin />}
             <h4>Hello, world, {getNumber()}!</h4>
+            <br />
+            <br />
+            <Div>
+                <P>
+                    <Span />
+                </P>
+            </Div>
         </div>
     )
 }
