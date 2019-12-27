@@ -12,7 +12,7 @@ const Span = () => {
         console.log('this is handler span');
     }
 
-    return <span role="button" onClick={handleClick} style={style}>Span</span>
+    return <span role="button" style={style} onClick={handleClick}>Span</span>;
 }
 
 export default Span;

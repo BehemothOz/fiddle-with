@@ -8,6 +8,8 @@ const style = {
 }
 
 const Div = props => {
+    // console.log('Div', props);
+
     const handleClick = event => {
         console.log('Div', event);
         console.log({

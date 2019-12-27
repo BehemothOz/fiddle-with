@@ -1,5 +1,6 @@
 import React from 'react';
 import { Spin } from 'antd';
+import Header from '../components/Header';
 import Div from '../components/Div';
 import P from '../components/P';
 import Span from '../components/Span';
@@ -42,8 +43,6 @@ const callPromise = data => {
 const Home = () => {
     const [{ data, fetching }, perform] = useAction(callPromise);
 
-    console.log({data, fetching});
-
     const click = () => {
         console.count('click');
         perform(1)
@@ -54,18 +53,20 @@ const Home = () => {
     }
 
     return (
-        <div style={{ padding: '20px' }}>
-            <button onClick={click} style={{ marginRight: 10 }}>Set Name 'Ivan'</button>
-            {fetching && <Spin />}
-            <h4>Hello, world, {getNumber()}!</h4>
-            <br />
-            <br />
-            <Div>
-                <P>
-                    <Span />
-                </P>
-            </Div>
-        </div>
+        <>
+            <Header />
+            <div style={{ padding: '20px' }}>
+                <button onClick={click} style={{ marginRight: 10 }}>Set Name 'Ivan'</button>
+                {fetching && <Spin />}
+                <h4>Hello, world, {getNumber()}!</h4>
+                <br /><br />
+                <Div>
+                    <P>
+                        <Span />
+                    </P>
+                </Div>
+            </div>
+        </>
     )
 }
 
