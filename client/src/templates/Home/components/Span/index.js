@@ -8,7 +8,10 @@ const style = {
 }
 
 const Span = () => {
-    const handleClick = () => console.log('span');
+    const handleClick = () => {
+        console.log('this is handler span');
+    }
+
     return <span role="button" onClick={handleClick} style={style}>Span</span>
 }
 

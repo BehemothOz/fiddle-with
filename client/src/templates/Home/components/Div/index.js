@@ -8,8 +8,16 @@ const style = {
 }
 
 const Div = props => {
+    const handleClick = event => {
+        console.log('Div', event);
+        console.log({
+            'event.target': event.target,
+            'event.currentTarget': event.currentTarget
+        })
+    }
+
     return (
-        <div style={style}>
+        <div style={style} onClick={handleClick}>
             Div
             {props.children}
         </div>
