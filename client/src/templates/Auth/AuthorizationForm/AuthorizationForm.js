@@ -12,10 +12,11 @@ const mapPropsToValues = () => ({
 const handleSubmit = (values, bag) => {
     api.post('/login', {
         body: JSON.stringify(values)
-    }).then(res => {
-        if (res.status === 200) {
-            return bag.props.history.push('/home')
-        }
+    })
+    .then(a => console.log('done', a))
+    .catch(error => {
+        console.dir(error)
+        console.log(error)
     });
 };
 

@@ -1,38 +1,46 @@
 import config from './config';
 
-/*
-    Headers:
-    - content-type
-    - authorization
-*/
-
-// for patch + '/3'
-// const url = 'https://jsonplaceholder.typicode.com/users';
-
-// fetch(url, [options])
-
-// Promise.race([promise1, promise2]);
-
-/*
-    fetch(url, {
-        method: {{ 'GET', 'POST', 'PATCH', 'DELETE' }},
-        headers: {},
-        body: {JSON} // for 'POST' or 'PATCH'
-    })
-*/
-
 const methods = ['GET', 'POST', 'PATCH', 'DELETE'];
 
+const createError = response => {
+    const { status, statusText, body } = response;
+    const error = new Error(statusText);
+
+    error.body = body;
+    error.status = status;
+
+    return error;
+};
+
+const parseResponse = response => {
+    const { ok, status, statusText, headers } = response;
+    return response.json().then(body => {
+        return { ok, status, statusText, headers, body };
+    });
+};
+
+const checkResponse = response => {
+    if (response.ok) {
+        console.log('response.ok')
+        return response.body;
+    }
+
+    const error = createError(response);
+    console.dir(error);
+    throw error;
+};
+
 const create = method => (url, options = {}) => {
-    console.log(config, url)
     return fetch(`${config.url}${url}`, {
         method,
         headers: {
             "Content-Type": "application/json; charset=utf-8"
         },
         ...options
-    })//.then(res => res.json()).then(json => console.log(`method: ${method}`, json));
-}
+    })
+    .then(parseResponse)
+    .then(checkResponse)
+};
 
 const request = () => {
     return methods.reduce((acc, method) => {
@@ -44,16 +52,5 @@ const request = () => {
 };
 
 const api = request();
-
-// api.get(url)
-// api.post(url, {
-//     headers: {
-//         "Content-Type": "application/json; charset=utf-8"
-//     },
-//     body: JSON.stringify({
-//         username: 'Elon Musk',
-//         email: 'elonmusk@gmail.com'
-//     })
-// })
 
 export default api;
