@@ -59,28 +59,15 @@ const reducer = (state, action) => {
 const useFetch = (handler) => {
     const [state, dispatch] = React.useReducer(reducer, initialState);
 
-    console.log(handler);
-    // trigger
-
     const trigger = (...args) => {
         // dispatch(actions.request());
         console.log(1, ...args)
-        // const resukt  =  handler(...args);
-        // console.log(resukt)
         return handler(...args).then(a => console.log('done', a))
         .catch(error => {
             console.dir(error)
             console.log(error)
         });
     };
-
-
-
-    // .then(a => console.log('done', a))
-    // .catch(error => {
-    //     console.dir(error)
-    //     console.log(error)
-    // });
 
     return [state, trigger];
 }
