@@ -6,7 +6,7 @@ import { USERNAME, EMAIL, PASSWORD } from '../../../constants/auth';
 import styles from './styles.module.scss';
 
 const RegistrationForm = props => {
-    const { handleSubmit } = props;
+    const { handleSubmit, isSubmitting } = props;
 
     return (
         <Form onSubmit={handleSubmit} autoComplete="off">
@@ -16,12 +16,14 @@ const RegistrationForm = props => {
                 component={TextField}
                 prefix={<Icon type="user" className={styles.iconInput} />}
                 placeholder="Username"
+                disabled={isSubmitting}
             />
             <FormItem
                 name={EMAIL}
                 component={TextField}
                 prefix={<Icon type="mail" className={styles.iconInput} />}
                 placeholder="Email"
+                disabled={isSubmitting}
             />
             <FormItem
                 name={PASSWORD}
@@ -30,6 +32,7 @@ const RegistrationForm = props => {
                 prefix={<Icon type="lock" className={styles.iconInput} />}
                 placeholder="Password"
                 autoComplete="new-password"
+                disabled={isSubmitting}
             />
             {/* <Form.Item>
                 <Input
