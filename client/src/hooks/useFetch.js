@@ -1,28 +1,6 @@
 import React from 'react';
-
-const REQUEST = 'REQUEST';
-const SUCCESS = 'SUCCESS';
-const ERROR = 'ERROR';
-
-const request = () => {
-    return {
-        type: REQUEST,
-    }
-}
-
-const success = data => {
-    return {
-        type: 'SUCCESS',
-        payload: data
-    }
-}
-
-const error = errors => {
-    return {
-        type: 'ERROR',
-        payload: errors
-    }
-}
+import * as action from '../actions';
+import { REQUEST, SUCCESS, ERROR } from '../constants';
 
 const initialState = {
     response: {},
@@ -31,7 +9,6 @@ const initialState = {
 };
 
 const reducer = (state, action) => {
-    console.log('>>>>>>', state, action);
     switch (action.type) {
         case REQUEST: {
             return {
@@ -41,32 +18,30 @@ const reducer = (state, action) => {
         }
         case SUCCESS: {
             return {
-                fetching: true,
                 response: action.payload,
-                errors: {}
+                fetching: true,
+                errors: null
             }
         }
         case ERROR: {
             return {
                 ...state,
                 fetching: false,
-                errors: action.errors
+                errors: action.payload
             }
         }
     }
-}
+};
 
-const useFetch = (handler) => {
+const useFetch = func => {
     const [state, dispatch] = React.useReducer(reducer, initialState);
 
     const trigger = (...args) => {
-        // dispatch(actions.request());
-        console.log(1, ...args)
-        return handler(...args).then(a => console.log('done', a))
-        .catch(error => {
-            console.dir(error)
-            console.log(error)
-        });
+        dispatch(action.request());
+
+        return func(...args)
+            .then(data => dispatch(action.success(data)))
+            .catch(errors => dispatch(action.error(errors)));
     };
 
     return [state, trigger];
