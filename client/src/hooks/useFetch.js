@@ -2,6 +2,8 @@ import React from 'react';
 import * as action from '../actions';
 import { REQUEST, SUCCESS, ERROR } from '../constants';
 
+import { message } from 'antd';
+
 const initialState = {
     response: {},
     fetching: false,
@@ -19,7 +21,7 @@ const reducer = (state, action) => {
         case SUCCESS: {
             return {
                 response: action.payload,
-                fetching: true,
+                fetching: false,
                 errors: null
             }
         }
@@ -36,12 +38,19 @@ const reducer = (state, action) => {
 const useFetch = func => {
     const [state, dispatch] = React.useReducer(reducer, initialState);
 
-    const trigger = (...args) => {
+    const trigger = args => {
+        const { redirect, ...rest } = args;
+
         dispatch(action.request());
 
-        return func(...args)
-            .then(data => dispatch(action.success(data)))
-            .catch(errors => dispatch(action.error(errors)));
+        return func(rest)
+            .then(data => {
+                setTimeout(() => dispatch(action.success(data)), 1000)
+            })
+            .catch(errors => {
+                dispatch(action.error(errors));
+                message.error(errors.message);
+            });
     };
 
     return [state, trigger];

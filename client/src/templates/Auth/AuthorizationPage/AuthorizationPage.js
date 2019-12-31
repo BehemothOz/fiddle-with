@@ -8,9 +8,9 @@ const AuthorizationPage = () => {
         return api.post('/login', options);
     }
 
-    const [_, trigger] = useFetch(handleSubmit)
+    const [state, trigger] = useFetch(handleSubmit)
 
-    return <AuthorizationForm onSubmit={trigger} />
+    return <AuthorizationForm onSubmit={trigger} fetching={state.fetching} />
 }
 
 export default AuthorizationPage;

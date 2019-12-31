@@ -10,7 +10,8 @@ const mapPropsToValues = () => ({
 
 const handleSubmit = (values, bag) => {
     bag.props.onSubmit({
-        body: JSON.stringify(values)
+        body: JSON.stringify(values),
+        redirect: '/home'
     })
 };
 

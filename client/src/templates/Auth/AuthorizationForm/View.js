@@ -24,7 +24,13 @@ const AuthorizationForm = props => {
                 placeholder="Password"
             />
             <div className={styles.buttons}>
-                <Button type="primary" htmlType="submit" className={styles.loginButton} block>
+                <Button
+                    className={styles.loginButton}
+                    type="primary"
+                    htmlType="submit"
+                    loading={props.fetching}
+                    block
+                >
                     Log in
                 </Button>
                 <Link to="/registration" className={styles.link}>Registration</Link>
