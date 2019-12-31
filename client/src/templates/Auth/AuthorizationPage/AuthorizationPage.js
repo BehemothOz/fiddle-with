@@ -1,16 +1,26 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import AuthorizationForm from '../AuthorizationForm';
 import useFetch from '../../../hooks/useFetch';
 import api from '../../../api';
 
-const AuthorizationPage = () => {
-    const handleSubmit = options => {
+const AuthorizationPage = props => {
+    const handleSubmit = useCallback(options => {
         return api.post('/login', options);
-    }
+    });
 
-    const [state, trigger] = useFetch(handleSubmit)
+    const handleSubmitSuccess = useCallback(() => {
+        props.history.push('/home');
+    });
 
-    return <AuthorizationForm onSubmit={trigger} fetching={state.fetching} />
+    const [state, trigger] = useFetch(handleSubmit);
+
+    return (
+        <AuthorizationForm
+            fetching={state.fetching}
+            onSubmit={trigger}
+            onSubmitSuccess={handleSubmitSuccess}
+        />
+    )
 }
 
 export default AuthorizationPage;

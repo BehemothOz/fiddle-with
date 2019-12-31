@@ -39,13 +39,17 @@ const useFetch = func => {
     const [state, dispatch] = React.useReducer(reducer, initialState);
 
     const trigger = args => {
-        const { redirect, ...rest } = args;
+        const { onSuccess, ...rest } = args;
 
         dispatch(action.request());
 
         return func(rest)
+            .then(response => {
+                dispatch(action.success(response));
+                return response;
+            })
             .then(data => {
-                setTimeout(() => dispatch(action.success(data)), 1000)
+                if (onSuccess) onSuccess(data);
             })
             .catch(errors => {
                 dispatch(action.error(errors));
