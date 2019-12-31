@@ -5,7 +5,7 @@ import { Button, TextField, FormItem } from '../../../shared';
 import { USERNAME, EMAIL, PASSWORD } from '../../../constants/auth';
 import styles from './styles.module.scss';
 
-const RegistarionForm = props => {
+const RegistrationForm = props => {
     const { handleSubmit } = props;
 
     return (
@@ -47,4 +47,4 @@ const RegistarionForm = props => {
     )
 }
 
-export default RegistarionForm;
+export default RegistrationForm;

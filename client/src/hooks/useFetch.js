@@ -35,7 +35,7 @@ const reducer = (state, action) => {
     }
 };
 
-const useFetch = func => {
+export const useFetch = func => {
     const [state, dispatch] = React.useReducer(reducer, initialState);
 
     const trigger = args => {
@@ -45,19 +45,33 @@ const useFetch = func => {
 
         return func(rest)
             .then(response => {
+                console.log(10)
                 dispatch(action.success(response));
                 return response;
             })
             .then(data => {
+                console.log(20)
                 if (onSuccess) onSuccess(data);
             })
             .catch(errors => {
+                console.log(30)
                 dispatch(action.error(errors));
                 message.error(errors.message);
-            });
+            })
     };
 
     return [state, trigger];
 }
 
-export default useFetch;
+export const useFetchForm = func => {
+    const [state, trigger] = useFetch(func);
+
+    const submit = args => {
+        return trigger(args)
+            .catch(errors => {
+                console.log(50)
+            })
+    }
+
+    return [state, submit];
+}
