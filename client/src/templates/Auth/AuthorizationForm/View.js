@@ -15,6 +15,7 @@ const AuthorizationForm = props => {
                 component={TextField}
                 prefix={<Icon type="user" className={styles.iconInput} />}
                 placeholder="Username"
+                autoComplete="username"
             />
             <FormItem
                 name={PASSWORD}
@@ -22,6 +23,7 @@ const AuthorizationForm = props => {
                 component={TextField}
                 prefix={<Icon type="lock" className={styles.iconInput} />}
                 placeholder="Password"
+                autoComplete="current-password"
             />
             <div className={styles.buttons}>
                 <Button
