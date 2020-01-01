@@ -16,7 +16,7 @@ const RegistrationComplete = () => {
 
     React.useEffect(() => {
         const timeId = setTimeout(() => {
-            if (time === 0) {
+            if (time <= 1) {
                 clearTimeout(timeId);
                 history.push('/');
             }
