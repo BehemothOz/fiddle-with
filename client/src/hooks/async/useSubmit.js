@@ -21,9 +21,9 @@ const useSubmit = func => {
                     formikBag.setStatus(fields);
                 }
 
-                handlerErrors(error)
-            })
-            .finally(() => formikBag.setSubmitting(false))
+                handlerErrors(error);
+                formikBag.setSubmitting(false)
+            });
     }
 
     return [state, submit];

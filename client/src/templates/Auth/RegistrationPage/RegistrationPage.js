@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import RegistrationForm from '../RegistrationForm';
-import useSubmit from '../../../hooks/useSubmit';
+import useSubmit from '../../../hooks/async/useSubmit';
 import api from '../../../api';
 
 const RegistrationPage = () => {

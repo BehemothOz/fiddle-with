@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import AuthorizationForm from '../AuthorizationForm';
-import useFetch from '../../../hooks/useFetch';
+import useSubmit from '../../../hooks/async/useSubmit';
 import api from '../../../api';
 
 const AuthorizationPage = props => {
@@ -12,12 +12,12 @@ const AuthorizationPage = props => {
         props.history.push('/home');
     });
 
-    const [state, trigger] = useFetch(handleSubmit);
+    const [state, submit] = useSubmit(handleSubmit);
 
     return (
         <AuthorizationForm
             fetching={state.fetching}
-            onSubmit={trigger}
+            onSubmit={submit}
             onSubmitSuccess={handleSubmitSuccess}
         />
     )

@@ -1,29 +1,23 @@
 import React from 'react';
-import { useField } from 'formik';
+import { useField, useFormikContext } from 'formik';
 import { Form } from 'antd';
-
-const SUCCESS = 'success';
-const ERROR = 'error';
-const DEFAULT = '';
-
-const getValidateStatus = (error, touched) => {
-    if (!touched) return DEFAULT;
-    if (error && touched) return ERROR;
-
-    return SUCCESS;
-}
+import useValidateStatus from '../../hooks/useValidateStatus';
 
 const FormItem = props => {
-    const [field, meta] = useField(props.name);
-
     const { name, component: Component, help, ...rest } = props;
+
+    const [ field, meta ] = useField(name);
+
+    const { status = {} } = useFormikContext();
     const { error, touched } = meta;
 
-    const hasError = error && touched;
-    const errorMessage = hasError && error;
-    const validateStatus = getValidateStatus(error, touched);
+    const [ validateStatus, message ] = useValidateStatus(
+        error,
+        touched,
+        status[name]
+    );
 
-    const helperText = help || errorMessage;
+    const helperText = help || message;
 
     return (
         <Form.Item
