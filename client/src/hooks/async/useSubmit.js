@@ -8,6 +8,10 @@ const useSubmit = func => {
     const submit = args => {
         const { formikBag, useStatus, ...rest } = args;
 
+        if (!formikBag) {
+            throw Error('formikBag is required for the method submit.');
+        }
+
         return trigger(rest)
             .catch(error => {
                 const { status } = error;

@@ -1,6 +1,6 @@
 import React from 'react';
-import * as action from '../actions';
-import { REQUEST, SUCCESS, ERROR } from '../constants';
+import * as action from '../../actions';
+import { REQUEST, SUCCESS, ERROR } from '../../constants';
 
 const initialState = {
     response: {},
