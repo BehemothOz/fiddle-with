@@ -57,6 +57,8 @@ export const useFetch = func => {
                 console.log(30)
                 dispatch(action.error(errors));
                 message.error(errors.message);
+
+                throw errors;
             })
     };
 
@@ -67,10 +69,16 @@ export const useFetchForm = func => {
     const [state, trigger] = useFetch(func);
 
     const submit = args => {
-        return trigger(args)
+        const { formikBag, useStatus, ...rest } = args;
+
+        return trigger(rest)
             .catch(errors => {
-                console.log(50)
+                if (useStatus) {
+                    const { fields } = errors.body;
+                    formikBag.setStatus(fields);
+                }
             })
+            .finally(() => formikBag.setSubmitting(false))
     }
 
     return [state, submit];
