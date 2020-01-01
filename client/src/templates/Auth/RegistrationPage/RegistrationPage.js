@@ -1,18 +1,18 @@
 import React, { useCallback } from 'react';
 import RegistrationForm from '../RegistrationForm';
-import { useFetchForm } from '../../../hooks/useFetch';
+import useSubmit from '../../../hooks/useSubmit';
 import api from '../../../api';
 
-const AuthorizationPage = () => {
+const RegistrationPage = () => {
     const handleSubmit = useCallback(options => {
-        return api.post('/login', options);
+        return api.post('/registration', options);
     });
 
     const handleSubmitSuccess = useCallback(() => {
         console.log('Success submit form!');
     });
 
-    const [state, submit] = useFetchForm(handleSubmit);
+    const [state, submit] = useSubmit(handleSubmit);
 
     return (
         <RegistrationForm
@@ -23,4 +23,4 @@ const AuthorizationPage = () => {
     )
 }
 
-export default AuthorizationPage;
+export default RegistrationPage;

@@ -7,7 +7,7 @@ import styles from './styles.module.scss';
 
 const RegistrationForm = props => {
     const { handleSubmit, isSubmitting } = props;
-
+    console.log(props);
     return (
         <Form onSubmit={handleSubmit} autoComplete="off">
             <input autoComplete="off" name="hidden" type="text" className={styles.hidden}></input>
