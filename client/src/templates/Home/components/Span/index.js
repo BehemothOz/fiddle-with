@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ThemeContext } from '../../../../context';
+import { root } from './styles.module.scss';
 
 const style = {
     display: 'block',
@@ -8,11 +10,17 @@ const style = {
 }
 
 const Span = () => {
+    const themeContext = useContext(ThemeContext);
+
     const handleClick = () => {
         console.log('this is handler span');
     }
 
-    return <span role="button" style={style} onClick={handleClick}>Span</span>;
+    const styles = {
+        backgroundColor: themeContext.theme === 'dark' ? 'red' : 'green'
+    }
+
+    return <span role="button" className={root} style={styles} onClick={handleClick}>Span</span>;
 }
 
 export default Span;

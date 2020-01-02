@@ -1,13 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useContext, useCallback } from 'react';
 import { Switch as VanillaSwitch } from 'antd';
-import { AppContext } from '../../../../reducer';
+import { ThemeContext } from '../../../../context';
 
 const Switch = () => {
-    const theme = useContext(AppContext);
-    console.log(theme);
-    const handleChange = (a, b) => {
-        console.log(`switch to ${a, b}`);
-    }
+    const theme = useContext(ThemeContext);
+
+    const handleChange = useCallback((a, b) => {
+        theme.toggleTheme(a)
+    }, [theme.theme])
 
     return <VanillaSwitch onChange={handleChange} />;
 }

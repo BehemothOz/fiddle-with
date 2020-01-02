@@ -8,7 +8,7 @@ const style = {
 }
 
 const Div = props => {
-    // console.log('Div', props);
+    console.log('<Div /> RENDER');
 
     const handleClick = event => {
         console.log('Div', event);

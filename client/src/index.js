@@ -1,30 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from "react-router-dom";
-import { AppContext } from './reducer';
-
-// import './index.css';
-// import 'antd/dist/antd.css';
 import './assets/styles/index.scss';
 
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-const themes = {
-    light: {
-      background: "#eeeeee"
-    },
-    dark: {
-      background: "#222222"
-    }
-};
-
 ReactDOM.render(
-    <AppContext.Provider value={themes.light}>
-        <Router>
-            <App />
-        </Router>
-    </AppContext.Provider>, document.getElementById('root')
+    <Router><App /></Router>,
+    document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change

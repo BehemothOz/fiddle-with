@@ -7,6 +7,7 @@ const style = {
 }
 
 const P = props => {
+    console.log('<P /> RENDER');
     return (
         <p style={style}>
             P
