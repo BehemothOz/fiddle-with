@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { ThemeContext } from '../../../../context';
+import { ThemeStateContext } from '../../../../contexts';
 import { root } from './styles.module.scss';
 
 const style = {
@@ -10,14 +10,15 @@ const style = {
 }
 
 const Span = () => {
-    const themeContext = useContext(ThemeContext);
+    console.count('<SPAN /> RENDER');
+    const theme = useContext(ThemeStateContext);
 
     const handleClick = () => {
         console.log('this is handler span');
     }
 
     const styles = {
-        backgroundColor: themeContext.theme === 'dark' ? 'red' : 'green'
+        backgroundColor: theme === 'dark' ? 'red' : 'green'
     }
 
     return <span role="button" className={root} style={styles} onClick={handleClick}>Span</span>;

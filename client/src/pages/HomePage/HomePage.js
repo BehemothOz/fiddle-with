@@ -1,13 +1,24 @@
 import React from 'react';
-import Header from './components/Header';
+import Header from '../../components/Header';
 import Div from './components/Div';
 import P from './components/P';
 import Span from './components/Span';
+import { Switch } from '../../shared'
+
+const Block = () => {
+    console.count('BLOCK BETWEEN HEADER AND SWITCH')
+
+    return <div>1</div>
+}
 
 const Home = () => {
+    console.count('<HOME /> RENDER');
     return (
         <>
-            <Header />
+            <Header>
+                <Block />
+                <Switch />
+            </Header>
             <div style={{ padding: '20px' }}>
                 <Div>
                     <P>

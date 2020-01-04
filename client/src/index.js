@@ -6,8 +6,14 @@ import './assets/styles/index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+import ThemeProvider from './providers/ThemeProvider';
+
 ReactDOM.render(
-    <Router><App /></Router>,
+    <ThemeProvider>
+        <Router>
+            <App />
+        </Router>
+    </ThemeProvider>,
     document.getElementById('root')
 );
 

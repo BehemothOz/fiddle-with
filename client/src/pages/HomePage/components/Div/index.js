@@ -11,7 +11,7 @@ const Div = props => {
     console.log('<Div /> RENDER');
 
     const handleClick = event => {
-        console.log('Div', event);
+        console.count('<DIV /> RENDER');
         console.log({
             'event.target': event.target,
             'event.currentTarget': event.currentTarget

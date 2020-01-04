@@ -7,7 +7,7 @@ const style = {
 }
 
 const P = props => {
-    console.log('<P /> RENDER');
+    console.count('<P /> RENDER');
     return (
         <p style={style}>
             P
