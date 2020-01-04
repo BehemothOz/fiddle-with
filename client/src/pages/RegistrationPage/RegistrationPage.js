@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react';
-import RegistrationForm from '../RegistrationForm';
-import RegistrationComplete from '../../../components/RegistrationComplete';
-import useSubmit from '../../../hooks/async/useSubmit';
-import api from '../../../api';
+import RegistrationForm from './components/RegistrationForm';
+import RegistrationComplete from './components/RegistrationComplete';
+import useSubmit from '../../hooks/async/useSubmit';
+import api from '../../api';
 
 const RegistrationPage = () => {
     const [complete, setComplete] = React.useState(false);

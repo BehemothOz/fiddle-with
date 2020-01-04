@@ -1,8 +1,8 @@
 import React from 'react';
 import { Switch, Route, useRouteMatch } from 'react-router';
 import { FullHeight, Paper, Logo } from '../../shared';
-import AuthorizationPage from './AuthorizationPage';
-import RegistrationPage from './RegistrationPage';
+import AuthorizationPage from '../../pages/AuthorizationPage';
+import RegistrationPage from '../../pages/RegistrationPage';
 import styles from './styles.module.scss';
 
 const Auth = () => {

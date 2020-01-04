@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Switch, Route } from 'react-router';
-import Auth from './templates/Auth';
-import Home from './templates/Home/Home';
+import AuthTemplate from './templates/AuthTemplate';
+import BaseTemplate from './templates/BaseTemplate';
 import { ThemeContext, themes } from './context';
 
 const App = () => {
@@ -17,8 +17,8 @@ const App = () => {
 
     return <ThemeContext.Provider value={theme}>
         <Switch>
-            <Route path="/home" component={Home} />
-            <Route path="/" component={Auth} />
+            <Route path="/home" component={BaseTemplate} />
+            <Route path="/" component={AuthTemplate} />
         </Switch>
     </ThemeContext.Provider>
 }

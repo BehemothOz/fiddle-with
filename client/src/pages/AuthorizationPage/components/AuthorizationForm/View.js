@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Form, Icon } from 'antd';
-import { Button, TextField, FormItem } from '../../../shared';
-import { EMAIL, PASSWORD } from '../../../constants/auth';
+import { Button, TextField, FormItem } from '../../../../shared';
+import { EMAIL, PASSWORD } from '../../../../constants/auth';
 import styles from './styles.module.scss';
 
 const AuthorizationForm = props => {

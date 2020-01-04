@@ -1,5 +1,5 @@
 import * as yup from 'yup';
-import { USERNAME, EMAIL, PASSWORD } from '../../../constants/auth';
+import { USERNAME, EMAIL, PASSWORD } from '../../../../constants/auth';
 
 const validationSchema = yup.object().shape({
     [USERNAME]: yup.string().required(),

@@ -1,9 +1,10 @@
 import { withFormik } from 'formik';
 import validationSchema from './validation';
-import { EMAIL, PASSWORD } from '../../../constants/auth';
+import { USERNAME, EMAIL, PASSWORD } from '../../../../constants/auth';
 import View from './View';
 
 const mapPropsToValues = () => ({
+    [USERNAME]: '',
     [EMAIL]: '',
     [PASSWORD]: ''
 });
@@ -12,11 +13,12 @@ const handleSubmit = (values, bag) => {
     bag.props.onSubmit({
         body: JSON.stringify(values),
         formikBag: bag,
+        useStatus: true,
         onSuccess: bag.props.onSubmitSuccess
     })
 };
 
-const displayName = 'AuthorizationForm';
+const displayName = 'RegistrationForm';
 
 export default withFormik({
     mapPropsToValues,

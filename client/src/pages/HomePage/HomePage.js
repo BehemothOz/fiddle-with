@@ -1,8 +1,8 @@
 import React from 'react';
-import Header from '../components/Header';
-import Div from '../components/Div';
-import P from '../components/P';
-import Span from '../components/Span';
+import Header from './components/Header';
+import Div from './components/Div';
+import P from './components/P';
+import Span from './components/Span';
 
 const Home = () => {
     return (

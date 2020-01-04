@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
-import AuthorizationForm from '../AuthorizationForm';
-import useSubmit from '../../../hooks/async/useSubmit';
-import api from '../../../api';
+import AuthorizationForm from './components/AuthorizationForm';
+import useSubmit from '../../hooks/async/useSubmit';
+import api from '../../api';
 
 const AuthorizationPage = props => {
     const handleSubmit = useCallback(options => {
