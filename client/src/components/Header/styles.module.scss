@@ -1,0 +1,16 @@
+.root {
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    height: 50px;
+    border-bottom: 1px solid #d6d6d6;
+    transition: all 0.2s ease;
+}
+
+.theme-light {
+    background-color: #fff;
+}
+
+.theme-dark {
+    background-color: #282c33;
+}
