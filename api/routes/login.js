@@ -1,5 +1,6 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
 
 const router = express.Router();
 const User = require('../models/user');
@@ -17,6 +18,8 @@ router.post('/', async (req, res, next) => {
         if (!user) return next({ status: 400, body: 'User does not exists' });
 
         // TODO: add validation password hash
+        const isValidPassword = await bcrypt.compare(req.body.password, user.password);
+        if (!isValidPassword) return next({ status: 400, body: 'Invalid email and password' });
 
         // Create and assign token (jwt)
         const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET)
