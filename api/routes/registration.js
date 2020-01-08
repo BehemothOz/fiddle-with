@@ -1,4 +1,5 @@
 const express = require('express');
+const bcrypt = require('bcryptjs');
 const router = express.Router();
 const User = require('../models/user');
 const { validateRegistration } = require('./validation');
@@ -15,13 +16,15 @@ router.post('/', async (req, res, next) => {
     const existUser = await User.findOne({ [EMAIL]: email });
     if (existUser) return next({ status: 400, body: 'Email already exists'});
 
-    // TODO: add password hashing option
+    // Hashing password
+    const salt = await bcrypt.genSalt(12);
+    const hashedPassword = await bcrypt.hash(password, salt);
 
     // Create a new user
     const user = new User({
         [USERNAME]: name,
         [EMAIL]: email,
-        [PASSWORD]: password
+        [PASSWORD]: hashedPassword
     });
 
     try {
