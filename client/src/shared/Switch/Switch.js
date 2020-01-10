@@ -2,7 +2,7 @@ import React, { useContext, useCallback } from 'react';
 import { Switch as AntSwitch } from 'antd';
 import { ThemeActionContext } from '../../contexts';
 
-import usePrevious from '../../hooks/usePrevious';
+import usePrevious from '../../hooks/utils/usePrevious';
 
 const Switch = () => {
     console.count('<SWITCH /> RENDER');

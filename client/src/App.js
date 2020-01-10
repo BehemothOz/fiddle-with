@@ -1,16 +1,27 @@
-import React from 'react';
-import { Switch, Route } from 'react-router';
-import AuthTemplate from './templates/AuthTemplate';
-import BaseTemplate from './templates/BaseTemplate';
+import React, { useContext } from 'react';
+// import { Switch, Route } from 'react-router';
+// import AuthTemplate from './templates/AuthTemplate';
+// import BaseTemplate from './templates/BaseTemplate';
+import { AuthStateContext } from './contexts/AuthContext';
+import getRoutes from './routes';
 
 const App = () => {
     console.count('<APP /> RENDER');
+
+    const isAuth = useContext(AuthStateContext);
+    console.log('isAuth', isAuth);
+    const routes = getRoutes(isAuth);
+
     return (
-        <Switch>
-            <Route path="/home" component={BaseTemplate} />
-            <Route path="/" component={AuthTemplate} />
-        </Switch>
+        <div>
+            {routes}
+        </div>
     );
 }
 
 export default App;
+
+{/* <Switch>
+        <Route path="/home" component={BaseTemplate} />
+        <Route path="/" component={AuthTemplate} />
+    </Switch> */}
