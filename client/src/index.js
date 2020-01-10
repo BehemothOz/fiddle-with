@@ -7,13 +7,16 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import ThemeProvider from './providers/ThemeProvider';
+import AuthProvider from './providers/AuthProvider';
 
 ReactDOM.render(
-    <ThemeProvider>
-        <Router>
-            <App />
-        </Router>
-    </ThemeProvider>,
+    <Router>
+        <AuthProvider>
+            <ThemeProvider>
+                <App />
+            </ThemeProvider>
+        </AuthProvider>
+    </Router>,
     document.getElementById('root')
 );
 
