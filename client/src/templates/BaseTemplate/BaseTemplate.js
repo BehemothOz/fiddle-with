@@ -1,9 +1,8 @@
 import React from 'react';
 import Header from '../../components/Header';
 import { Switch, Logout } from '../../shared';
-import HomePage from '../../pages/HomePage';
 
-const BaseTemplate = () => {
+const BaseTemplate = props => {
     console.count('<BaseTemplate /> RENDER');
     return (
         <>
@@ -11,7 +10,7 @@ const BaseTemplate = () => {
                 <Switch />
                 <Logout />
             </Header>
-            <HomePage />
+            {props.children}
         </>
     )
 }

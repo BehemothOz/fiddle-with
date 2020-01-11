@@ -1,10 +1,13 @@
 import React from 'react';
+import BaseTemplate from '../../templates/BaseTemplate';
 
-const Home = () => {
+const HomePage = () => {
     console.count('<HOME /> RENDER');
     return (
-        <div>Home page</div>
+        <BaseTemplate>
+            <div>Home page</div>
+        </BaseTemplate>
     )
 }
 
-export default Home;
+export default HomePage;
