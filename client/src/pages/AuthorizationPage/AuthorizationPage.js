@@ -3,8 +3,11 @@ import AuthorizationForm from './components/AuthorizationForm';
 import useSubmit from '../../hooks/async/useSubmit';
 import api from '../../api';
 import { AuthActionsContext } from '../../contexts/AuthContext';
+import AuthTemplate from '../../templates/AuthTemplate';
 
-const AuthorizationPage = props => {
+const AuthorizationPage = () => {
+    console.count('<AuthorizationPage /> RENDER');
+
     const actions = useContext(AuthActionsContext);
 
     const handleSubmit = useCallback(options => {
@@ -12,7 +15,6 @@ const AuthorizationPage = props => {
     });
 
     const handleSubmitSuccess = useCallback((response) => {
-        // props.history.push('/home');
         console.log('handleSubmitSuccess!');
         actions.login(response);
     });
@@ -20,11 +22,13 @@ const AuthorizationPage = props => {
     const [state, submit] = useSubmit(handleSubmit);
 
     return (
-        <AuthorizationForm
-            fetching={state.fetching}
-            onSubmit={submit}
-            onSubmitSuccess={handleSubmitSuccess}
-        />
+        <AuthTemplate>
+            <AuthorizationForm
+                fetching={state.fetching}
+                onSubmit={submit}
+                onSubmitSuccess={handleSubmitSuccess}
+            />
+        </AuthTemplate>
     )
 }
 

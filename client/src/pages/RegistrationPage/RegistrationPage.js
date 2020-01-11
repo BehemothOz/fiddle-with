@@ -3,8 +3,11 @@ import RegistrationForm from './components/RegistrationForm';
 import RegistrationComplete from './components/RegistrationComplete';
 import useSubmit from '../../hooks/async/useSubmit';
 import api from '../../api';
+import AuthTemplate from '../../templates/AuthTemplate';
 
 const RegistrationPage = () => {
+    console.count('<RegistrationPage /> RENDER');
+
     const [complete, setComplete] = React.useState(false);
 
     const handleSubmit = useCallback(options => {
@@ -20,16 +23,20 @@ const RegistrationPage = () => {
 
     if (complete) {
         return (
-            <RegistrationComplete />
+            <AuthTemplate>
+                <RegistrationComplete />
+            </AuthTemplate>
         )
     }
 
     return (
-        <RegistrationForm
-            fetching={state.fetching}
-            onSubmit={submit}
-            onSubmitSuccess={handleSubmitSuccess}
-        />
+        <AuthTemplate>
+            <RegistrationForm
+                fetching={state.fetching}
+                onSubmit={submit}
+                onSubmitSuccess={handleSubmitSuccess}
+            />
+        </AuthTemplate>
     )
 }
 

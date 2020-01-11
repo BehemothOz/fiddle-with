@@ -1,4 +1,4 @@
-import React, { useContext, useCallback } from 'react';
+import React, { useContext } from 'react';
 import { Switch as AntSwitch } from 'antd';
 import { ThemeActionContext } from '../../contexts';
 
