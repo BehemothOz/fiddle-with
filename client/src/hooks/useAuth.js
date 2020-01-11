@@ -6,10 +6,6 @@ const useAuth = () => {
 
     const [isAuth, setIsAuth] = useState(Boolean(storage.value));
 
-    useEffect(() => {
-        setIsAuth(Boolean(storage.value));
-    }, [storage.value])
-
     const login = useCallback(tk => {
         console.log('call login function', tk);
         storage.set(tk.token);
