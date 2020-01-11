@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import * as action from '../../actions';
 import { REQUEST, SUCCESS, ERROR } from '../../constants';
+import useLocalStorage from '../utils/useLocalStorage';
 
 const initialState = {
     response: {},
@@ -36,12 +37,31 @@ const reducer = (state, action) => {
 const useAsync = func => {
     const [state, dispatch] = React.useReducer(reducer, initialState);
 
+    const storage = useLocalStorage('token');
+
+    // TODO: temporary solution
+    const addAuthorizationHeader = useCallback(() => {
+        if (!storage.value) return {};
+
+        return {
+            headers: {
+                Authorization: storage.value
+            },
+        }
+    }, [storage.value]);
+
+
     const trigger = args => {
         const { onSuccess, onError, ...rest } = args;
 
+        const requestOptions = {
+            ...addAuthorizationHeader(),
+            ...rest
+        }
+
         dispatch(action.request());
 
-        return func(rest)
+        return func(requestOptions)
             .then(response => {
                 dispatch(action.success(response))
 

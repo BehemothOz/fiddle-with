@@ -1,6 +1,7 @@
-import abortableFetch from './utils/abortableFetch';
 import checkResponse from './middleware/checkResponse';
 import parseResponse from './middleware/parseResponse';
+import abortableFetch from './utils/abortableFetch';
+import { addHeaders, addBody } from './utils/enchancers';
 import config from './config';
 
 let timeoutId;
@@ -13,9 +14,11 @@ export const request = method => (url, options = {}) => {
     const fetch = abortableFetch(`${config.url}${url}`, {
         method,
         headers: {
-            "Content-Type": "application/json; charset=utf-8"
+            "Content-Type": "application/json; charset=utf-8",
+            "Accept": 'application/json',
+            ...addHeaders(options)
         },
-        ...options
+        ...addBody(options)
     });
 
     return Promise.race([

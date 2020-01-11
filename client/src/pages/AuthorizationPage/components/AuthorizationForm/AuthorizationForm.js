@@ -10,7 +10,7 @@ const mapPropsToValues = () => ({
 
 const handleSubmit = (values, bag) => {
     bag.props.onSubmit({
-        body: JSON.stringify(values),
+        body: values,
         formikBag: bag,
         onSuccess: bag.props.onSubmitSuccess
     })
