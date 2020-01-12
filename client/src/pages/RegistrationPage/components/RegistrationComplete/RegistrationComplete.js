@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { Icon } from 'antd';
 import styles from './styles.module.scss';
@@ -12,7 +12,7 @@ const RegistrationComplete = () => {
     const [ time, setTime ] = React.useState(REDIRECT_TIME);
     const history = useHistory();
 
-    const decreaseTime = () => setTime(time - 1);
+    const decreaseTime = useCallback(() => setTime(time => time - 1), []);
 
     React.useEffect(() => {
         const timeId = setTimeout(() => {
@@ -23,7 +23,7 @@ const RegistrationComplete = () => {
             else decreaseTime();
         }, TIMEOUT);
         return () => clearTimeout(timeId);
-    }, [time]);
+    }, [time, decreaseTime]);
 
     return (
         <div className={root}>

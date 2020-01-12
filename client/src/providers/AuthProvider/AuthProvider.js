@@ -8,7 +8,7 @@ const AuthProvider = props => {
     const actions = useMemo(() => ({
         login,
         logout
-    }));
+    }), [login, logout]);
 
     return (
         <AuthStateContext.Provider value={isAuth}>

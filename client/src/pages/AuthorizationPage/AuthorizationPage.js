@@ -12,12 +12,12 @@ const AuthorizationPage = () => {
 
     const handleSubmit = useCallback(options => {
         return api.post('/login', options);
-    });
+    }, []);
 
     const handleSubmitSuccess = useCallback((response) => {
         console.log('handleSubmitSuccess!');
         actions.login(response);
-    });
+    }, [actions]);
 
     const [state, submit] = useSubmit(handleSubmit);
 

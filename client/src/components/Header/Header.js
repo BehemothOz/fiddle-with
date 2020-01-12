@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import cn from 'classnames';
-import { Switch } from '../../shared';
 import { ThemeStateContext } from '../../contexts';
 import styles from './styles.module.scss';
 

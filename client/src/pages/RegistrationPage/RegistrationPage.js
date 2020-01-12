@@ -12,12 +12,12 @@ const RegistrationPage = () => {
 
     const handleSubmit = useCallback(options => {
         return api.post('/registration', options);
-    });
+    }, []);
 
     const handleSubmitSuccess = useCallback(() => {
         console.log('Success submit form!');
         setComplete(true);
-    });
+    }, []);
 
     const [state, submit] = useSubmit(handleSubmit);
 

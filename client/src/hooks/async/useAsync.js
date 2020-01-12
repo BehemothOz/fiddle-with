@@ -31,6 +31,9 @@ const reducer = (state, action) => {
                 errors: action.payload
             }
         }
+        default: {
+            return state;
+        }
     }
 };
 
@@ -51,7 +54,8 @@ const useAsync = func => {
     }, [storage.value]);
 
 
-    const trigger = args => {
+    const trigger = (args = {}) => {
+        console.log('args', args)
         const { onSuccess, onError, ...rest } = args;
 
         const requestOptions = {
