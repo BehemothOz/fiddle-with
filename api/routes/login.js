@@ -5,7 +5,7 @@ const bcrypt = require('bcryptjs');
 const router = express.Router();
 const User = require('../models/user');
 const { validateAuthorization } = require('./validation');
-const [ _, EMAIL ] = require('../constants/auth');
+const { EMAIL } = require('../constants/user');
 
 router.post('/', async (req, res, next) => {
     // Validate the data

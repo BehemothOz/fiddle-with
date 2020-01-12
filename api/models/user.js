@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const [ USERNAME, EMAIL, PASSWORD, DATE ] = require('../constants/auth');
+const { USERNAME, EMAIL, PASSWORD, DATE } = require('../constants/user');
+const { USER, DICTIONARY } = require('../constants/models');
 
 const userSchema = mongoose.Schema({
     [USERNAME]: {
@@ -21,7 +22,8 @@ const userSchema = mongoose.Schema({
     [DATE]: {
         type: Date,
         default: Date.now
-    }
+    },
+    [DICTIONARY]: [{ type: mongoose.Types.ObjectId, ref: DICTIONARY }]
 });
 
-module.exports = mongoose.model('user', userSchema);
+module.exports = mongoose.model(USER, userSchema);

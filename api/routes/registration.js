@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 const router = express.Router();
 const User = require('../models/user');
 const { validateRegistration } = require('./validation');
-const [ USERNAME, EMAIL, PASSWORD ] = require('../constants/auth');
+const { USERNAME, EMAIL, PASSWORD } = require('../constants/user');
 
 router.post('/', async (req, res, next) => {
     // Validate the data

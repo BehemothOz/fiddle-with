@@ -1,5 +1,5 @@
 const Joi = require('@hapi/joi');
-const [ USERNAME, EMAIL, PASSWORD ] = require('../constants/auth');
+const { USERNAME, EMAIL, PASSWORD } = require('../constants/user');
 
 const validateRegistration = data => {
     console.log(data)
