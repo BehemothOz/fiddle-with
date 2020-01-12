@@ -1,8 +1,8 @@
 import useAsync from './useAsync';
 import useErrors from './useErrors';
 
-const useSubmit = func => {
-    const [state, trigger] = useAsync(func);
+const useSubmit = options => {
+    const [state, trigger] = useAsync(options);
     const handlerErrors = useErrors();
 
     const submit = args => {

@@ -1,16 +1,18 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import BaseTemplate from '../../templates/BaseTemplate';
 import useFetch from '../../hooks/async/useFetch';
-import api from '../../api';
+import { HOME_GET } from '../../api/keys';
 
 const HomePage = () => {
     console.count('<HOME /> RENDER');
 
-    const [, request] = useFetch(() => api.get('/home'));
+    const [, request] = useFetch({ key: HOME_GET });
+
+    const getHome = () => request(324234234234);
 
     return (
         <BaseTemplate>
-            <button onClick={request}>Click</button>
+            <button onClick={getHome}>Click</button>
             <div>Home page</div>
         </BaseTemplate>
     )

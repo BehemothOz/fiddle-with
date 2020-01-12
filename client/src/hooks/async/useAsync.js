@@ -1,46 +1,19 @@
 import React, { useCallback } from 'react';
 import * as action from '../../actions';
-import { REQUEST, SUCCESS, ERROR } from '../../constants';
 import useLocalStorage from '../utils/useLocalStorage';
+import dictionary from '../../api/dictionary';
+import { reducer, initialState } from '../../reducers';
 
-const initialState = {
-    response: {},
-    fetching: false,
-    errors: null
-};
+const useAsync = options => {
+    const { key } = options;
+    if (!key) throw Error('key is required field for request');
 
-const reducer = (state, action) => {
-    switch (action.type) {
-        case REQUEST: {
-            return {
-                ...state,
-                fetching: true
-            }
-        }
-        case SUCCESS: {
-            return {
-                response: action.payload,
-                fetching: false,
-                errors: null
-            }
-        }
-        case ERROR: {
-            return {
-                ...state,
-                fetching: false,
-                errors: action.payload
-            }
-        }
-        default: {
-            return state;
-        }
-    }
-};
-
-const useAsync = func => {
-    const [state, dispatch] = React.useReducer(reducer, initialState);
+    const { method } = dictionary[key];
+    if (!method) throw Error('add method to dictionary object');
 
     const storage = useLocalStorage('token');
+
+    const [state, dispatch] = React.useReducer(reducer, initialState);
 
     // TODO: temporary solution
     const addAuthorizationHeader = useCallback(() => {
@@ -54,8 +27,8 @@ const useAsync = func => {
     }, [storage.value]);
 
 
-    const trigger = (args = {}) => {
-        console.log('args', args)
+    const trigger = useCallback((args = {}) => {
+        console.log('useAsync args', args);
         const { onSuccess, onError, ...rest } = args;
 
         const requestOptions = {
@@ -65,7 +38,7 @@ const useAsync = func => {
 
         dispatch(action.request());
 
-        return func(requestOptions)
+        return method(requestOptions)
             .then(response => {
                 dispatch(action.success(response))
 
@@ -78,7 +51,7 @@ const useAsync = func => {
 
                 throw error;
             });
-    }
+    }, [dispatch]);
 
     return [state, trigger];
 }
