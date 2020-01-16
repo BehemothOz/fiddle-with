@@ -35,7 +35,7 @@ const useAsync = options => {
             ...addAuthorizationHeader(),
             ...rest
         }
-
+        console.log('requestOptions', requestOptions);
         dispatch(action.request());
 
         return method(requestOptions)
@@ -51,7 +51,7 @@ const useAsync = options => {
 
                 throw error;
             });
-    }, [dispatch]);
+    }, [dispatch, addAuthorizationHeader, method]);
 
     return [state, trigger];
 }

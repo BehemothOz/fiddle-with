@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 
-const guard = (res, req, next) => {
-    const token = res.header('auth-tokent');
+const guard = (req, res, next) => {
+    const token = req.header('authorization');
 
     if (!token) return res.status(401).send('Access denied');
 
@@ -10,7 +10,7 @@ const guard = (res, req, next) => {
         req.user = verified;
         next();
     } catch (error) {
-        res.status(400).send('Invalid token');
+        res.status(406).send('Invalid token');
     }
 }
 

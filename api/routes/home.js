@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const guard = require('./verifyToken');
 
-router.get('/', (req, res) => {
+router.get('/', guard, (req, res) => {
     res.status(200).json({ status: 'ok' });
 });
 

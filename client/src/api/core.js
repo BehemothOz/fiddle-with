@@ -11,7 +11,7 @@ export const timeout = abort => new Promise(() => {
 });
 
 export const request = method => (url, options = {}) => {
-    console.log(url, options)
+    console.log('request', url, options)
     const fetch = abortableFetch(`${config.url}${url}`, {
         method,
         headers: {

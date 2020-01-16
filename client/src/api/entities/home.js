@@ -1,5 +1,5 @@
 import api from '../';
 
 export default {
-    get: () => api.get('/home')
+    get: (...args) => api.get('/home', ...args)
 }
