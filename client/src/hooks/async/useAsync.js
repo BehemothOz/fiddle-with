@@ -8,8 +8,8 @@ const useAsync = options => {
     const { key } = options;
     if (!key) throw Error('key is required field for request');
 
-    const { method } = dictionary[key];
-    if (!method) throw Error('add method to dictionary object');
+    const { method, url } = dictionary[key];
+    if (!method || !url) throw Error('add method and url to dictionary object');
 
     const storage = useLocalStorage('token');
 
@@ -38,7 +38,7 @@ const useAsync = options => {
         console.log('requestOptions', requestOptions);
         dispatch(action.request());
 
-        return method(requestOptions)
+        return method(url, requestOptions)
             .then(response => {
                 dispatch(action.success(response))
 
