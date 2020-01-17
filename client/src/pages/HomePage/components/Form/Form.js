@@ -13,8 +13,11 @@ const handleSubmit = (values, bag) => {
         body: values,
         formikBag: bag,
         useStatus: true,
-        // onSuccess: bag.props.onSubmitSuccess
-    })
+        onSuccess: () => {
+            // bag.props.onSubmitSuccess
+            bag.setSubmitting(false);
+        }
+    });
 };
 
 const displayName = 'RegistrationForm';

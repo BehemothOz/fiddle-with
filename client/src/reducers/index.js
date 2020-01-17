@@ -1,7 +1,8 @@
 import { REQUEST, SUCCESS, ERROR } from '../constants';
 
+// TODO: dynamic inital state
 export const initialState = {
-    response: {},
+    response: null,
     fetching: false,
     errors: null
 };

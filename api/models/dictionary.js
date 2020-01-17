@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { WORD, TRANSFER } = require('../constants/dictionary');
+const { WORD, TRANSFER, DATE } = require('../constants/dictionary');
 const { USER, DICTIONARY } = require('../constants/models');
 
 const userSchema = mongoose.Schema({
@@ -15,7 +15,7 @@ const userSchema = mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    [USER]: [{ type: mongoose.Types.ObjectId, ref: USER }]
+    'user': { type: mongoose.Types.ObjectId, ref: USER }
 });
 
 module.exports = mongoose.model(DICTIONARY, userSchema);

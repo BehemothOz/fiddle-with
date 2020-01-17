@@ -7,9 +7,7 @@ const mongoose = require('mongoose');
 
 const registrationRouter = require('./routes/registration');
 const loginRouter = require('./routes/login');
-
-// temp
-const homeRouter = require('./routes/home');
+const dictionaryRouter = require('./routes/dictionary');
 
 const validationHandlerError = require('./errors/validationHandlerError');
 const globalHandlerError = require('./errors/globalHandlerError');
@@ -32,7 +30,7 @@ app.use(express.json());
 // Routes
 app.use('/registration', registrationRouter);
 app.use('/login', loginRouter);
-app.use('/home', homeRouter);
+app.use('/dictionary', dictionaryRouter);
 
 // Validation and global error handlers
 app.use(validationHandlerError);
