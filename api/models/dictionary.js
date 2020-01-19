@@ -3,18 +3,11 @@ const { WORD, TRANSFER, DATE } = require('../constants/dictionary');
 const { USER, DICTIONARY } = require('../constants/models');
 
 const userSchema = mongoose.Schema({
-    [WORD]: {
+    name: {
         type: String,
         require: true
     },
-    [TRANSFER]: {
-        type: String,
-        require: true
-    },
-    [DATE]: {
-        type: Date,
-        default: Date.now
-    },
+    'words': [{ type: mongoose.Types.ObjectId, ref: 'Word' }],
     'user': { type: mongoose.Types.ObjectId, ref: USER }
 });
 

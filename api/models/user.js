@@ -23,7 +23,8 @@ const userSchema = mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    [DICTIONARY]: [{ type: mongoose.Types.ObjectId, ref: DICTIONARY }]
+    // [DICTIONARY]: { type: mongoose.Types.ObjectId, ref: DICTIONARY }
+    // dictionaryID: { type: String, require: true }
 });
 
 module.exports = mongoose.model(USER, userSchema);

@@ -8,9 +8,24 @@ const { WORD, TRANSFER } = require('../constants/dictionary');
 
 router.get('/', guard, async (req, res) => {
     try {
-        const dictionary = await Dictionary.find({ user: req.user._id })
-        console.log(dictionary)
-        res.status(200).json(dictionary);
+
+        console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", req.query.d)
+
+        const id = req.query.d;
+
+        const aa = await Word.find({ dictionary: id });
+
+        console.log(aa)
+            // .populate('word')
+            // .exec(function (err, post) {
+            //     if (err) console.log(err);
+
+            //     console.log(post)
+            // });
+
+        // const dictionary = await Dictionary.find({ user: req.body.id })
+        // console.log(dictionary)
+        res.status(200).json(aa);
     } catch (error) {
         next({ status: 400, body: error.message })
     }
@@ -19,19 +34,17 @@ router.get('/', guard, async (req, res) => {
 router.post('/', guard, async (req, res) => {
     // TODO: add validation
 
-    console.log(req.user)
-
     try {
-        const dictionary = Dictionary({
-            // [WORD]: req.body.word,
-            // [TRANSFER]: req.body.transfer,
-            name: req.body.name,
-            user: req.user._id
+        const word = Word({
+            [WORD]: req.body.word,
+            [TRANSFER]: req.body.transfer,
+            // name: req.body.name,
+            dictionary: '5e2436ddbe5f8e39220c2bdd'
         });
 
-        const newDictionary = await dictionary.save();
+        const newWord = await word.save();
 
-        res.status(200).json(newDictionary)
+        res.status(200).json(newWord)
 
         // const dictionaryID = User({
         //     dictionaryID: newDictionary._id

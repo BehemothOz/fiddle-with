@@ -5,10 +5,12 @@ import List from './components/List';
 import useSubmit from '../../hooks/async/useSubmit';
 import { DICTIONARY_POST } from '../../api/keys';
 
+import Page from './components/Page';
+
 const HomePage = () => {
     console.count('<HOME /> RENDER');
     const [state, submit] = useSubmit({ key: DICTIONARY_POST });
-
+    console.log(state)
     const handleSubmitSuccess = useCallback(() => {
         console.log('ok')
     }, []);
@@ -22,6 +24,7 @@ const HomePage = () => {
                 onSubmitSuccess={handleSubmitSuccess}
             />
             <List />
+            <Page />
         </BaseTemplate>
     )
 }

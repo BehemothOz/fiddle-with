@@ -1,7 +1,6 @@
 import React from 'react';
 import { Form } from 'antd';
 import { Button, TextField, FormItem } from '../../../../shared';
-import { WORD, TRANSFER } from '../../../../constants/dictionary';
 import styles from './styles.module.scss';
 
 const DictionaryForm = props => {
@@ -9,20 +8,20 @@ const DictionaryForm = props => {
 
     return (
         <div className={styles.root}>
-            <div>Create Dictionary</div>
+            <div>Create Word</div>
             <Form onSubmit={handleSubmit}>
                 <FormItem
-                    name="name"
+                    name="word"
                     component={TextField}
                     placeholder="Enter.."
                     disabled={isSubmitting}
                 />
-                {/* <FormItem
-                    name={TRANSFER}
+                <FormItem
+                    name="transfer"
                     component={TextField}
                     placeholder="Enter transfer"
                     disabled={isSubmitting}
-                /> */}
+                />
                 <div>
                     <Button type="primary" htmlType="submit" block>
                         Add

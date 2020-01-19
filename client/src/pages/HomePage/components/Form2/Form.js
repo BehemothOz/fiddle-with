@@ -1,11 +1,11 @@
 import { withFormik } from 'formik';
 // import validationSchema from './validation';
-import { WORD, TRANSFER } from '../../../../constants/dictionary';
+// import { WORD, TRANSFER } from '../../../../constants/dictionary';
 import View from './View';
 
 const mapPropsToValues = () => ({
-    name: '',
-    // [TRANSFER]: ''
+    word: '',
+    transfer: ''
 });
 
 const handleSubmit = (values, bag) => {
