@@ -2,8 +2,8 @@ import { REQUEST, SUCCESS, ERROR } from '../constants';
 
 // TODO: dynamic inital state
 export const initialState = {
-    response: null,
-    fetching: false,
+    response: [],
+    fetching: true,
     errors: null
 };
 
@@ -12,7 +12,7 @@ export const reducer = (state, action) => {
         case REQUEST: {
             return {
                 ...state,
-                fetching: true
+                // fetching: true
             }
         }
         case SUCCESS: {

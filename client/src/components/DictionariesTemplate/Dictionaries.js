@@ -1,15 +1,12 @@
-import React, { useEffect, useContext } from 'react';
-import { Empty } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { Empty, Modal } from 'antd';
 import { Button, Paper } from '../../shared';
 import Dictionary from '../../components/Dictionary'
 import useFetch from '../../hooks/async/useFetch';
 import { DICTIONARY_GET } from '../../api/keys';
-import { DictionariesActionsContext } from '../../contexts/DictionariesContext';
 import styles from './styles.module.scss';
 
 const Dictionaries = () => {
-    const { toggleModal } = useContext(DictionariesActionsContext);
-
     const [state, request] = useFetch({ key: DICTIONARY_GET });
     useEffect(() => {
         request()
@@ -26,7 +23,7 @@ const Dictionaries = () => {
             <div>
             <Paper>
                 <Empty description="You don't have a dictionary yet">
-                    <Button type="primary" onClick={toggleModal}>Create Dictionary</Button>
+                    <Button type="primary" onClick={handleClick}>Create Dictionary</Button>
                 </Empty>
             </Paper>
             </div>

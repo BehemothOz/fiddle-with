@@ -1,12 +1,14 @@
 import React from 'react';
 import BaseTemplate from '../../templates/BaseTemplate';
-import { Paper } from '../../shared';
 import Dictionaries from '../../components/Dictionaries';
+import DictionariesProvider from '../../providers/DictionariesProvider';
 
 const HomePage = () => {
     return (
         <BaseTemplate>
-            <Dictionaries></Dictionaries>
+            <DictionariesProvider>
+                <Dictionaries />
+            </DictionariesProvider>
         </BaseTemplate>
     )
 }
