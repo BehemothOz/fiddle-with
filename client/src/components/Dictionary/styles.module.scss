@@ -1,0 +1,32 @@
+.root {
+    width: 100%;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.title {
+    margin-right: auto;
+    font-size: 1rem;
+    font-weight: 600;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.body {
+    padding: 8px;
+}
+
+.description {
+    margin-bottom: 8px;
+}
+
+.date {
+    font-size: 0.7rem;
+    text-align: right;
+}

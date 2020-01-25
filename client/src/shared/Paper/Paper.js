@@ -4,16 +4,28 @@ import cn from 'classnames';
 import styles from './styles.module.scss';
 
 const Paper = props => {
-    const { className, children } = props;
-    return <section className={cn(styles.paper, className)}>{children}</section>;
+    const { className, noindent, children } = props;
+    return (
+        <section
+            className={
+                cn(styles.paper, className, {
+                    [styles.padding]: !noindent
+                })
+            }
+        >
+            {children}
+        </section>
+    )
 }
 
 Paper.defaultProps = {
-    className: ''
+    className: '',
+    noindent: false
 }
 
 Paper.propTypes = {
-    className: PropTypes.string
+    className: PropTypes.string,
+    noindent: PropTypes.bool
 }
 
 export default Paper;

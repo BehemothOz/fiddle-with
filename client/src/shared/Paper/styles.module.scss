@@ -1,7 +1,11 @@
 @import '../../assets/styles/variables.scss';
 
 .paper {
-    padding: calc(#{$space} * 2);
-    border: 1px solid #ebedf0;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.12);
     border-radius: 4px;
+}
+
+.padding {
+    padding: calc(#{$space} * 2);
 }
