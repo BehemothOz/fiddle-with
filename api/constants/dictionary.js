@@ -1,5 +1,5 @@
 module.exports = {
-    WORD: 'word',
-    TRANSFER: 'transfer',
+    TITLE: 'title',
+    DESCRIPTION: 'description',
     DATE: 'date'
 };

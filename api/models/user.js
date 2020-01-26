@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const { USERNAME, EMAIL, PASSWORD, DATE } = require('../constants/user');
-const { USER, DICTIONARY } = require('../constants/models');
+const { USER } = require('../constants/models');
 
 const userSchema = mongoose.Schema({
     [USERNAME]: {
@@ -22,9 +22,7 @@ const userSchema = mongoose.Schema({
     [DATE]: {
         type: Date,
         default: Date.now
-    },
-    // [DICTIONARY]: { type: mongoose.Types.ObjectId, ref: DICTIONARY }
-    // dictionaryID: { type: String, require: true }
+    }
 });
 
 module.exports = mongoose.model(USER, userSchema);
