@@ -23,9 +23,8 @@ router.post('/', guard, async (req, res) => {
 
     try {
         const dictionary = Dictionary({
-            // [WORD]: req.body.word,
-            // [TRANSFER]: req.body.transfer,
-            name: req.body.name,
+            title: req.body.title,
+            description: req.body.description,
             user: req.user._id
         });
 

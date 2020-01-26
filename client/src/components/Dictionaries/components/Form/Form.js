@@ -1,11 +1,11 @@
 import { withFormik } from 'formik';
-// import validationSchema from './validation';
-// import { WORD, TRANSFER } from '../../../../constants/dictionary';
+import validationSchema from './validation';
+import { TITLE, DESCRIPTION } from '../../../../constants/dictionaries';
 import View from './View';
 
 const mapPropsToValues = () => ({
-    word: '',
-    transfer: ''
+    [TITLE]: '',
+    [DESCRIPTION]: ''
 });
 
 const handleSubmit = (values, bag) => {
@@ -14,17 +14,17 @@ const handleSubmit = (values, bag) => {
         formikBag: bag,
         useStatus: true,
         onSuccess: () => {
-            // bag.props.onSubmitSuccess
+            bag.props.onSubmitSuccess();
             bag.setSubmitting(false);
         }
     });
 };
 
-const displayName = 'RegistrationForm';
+const displayName = 'CreateDictionariesForm';
 
 export default withFormik({
     mapPropsToValues,
     handleSubmit,
-    // validationSchema,
+    validationSchema,
     displayName
 })(View);

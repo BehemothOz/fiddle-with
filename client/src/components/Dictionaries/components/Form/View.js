@@ -1,25 +1,25 @@
 import React from 'react';
-import { Form } from 'antd';
+import { Form as AntdForm } from 'antd';
 import { Button, TextField, FormItem } from '../../../../shared';
+import { TITLE, DESCRIPTION } from '../../../../constants/dictionaries';
 import styles from './styles.module.scss';
 
-const DictionaryForm = props => {
+const Form = props => {
     const { handleSubmit, isSubmitting } = props;
 
     return (
         <div className={styles.root}>
-            <div>Create Word</div>
-            <Form onSubmit={handleSubmit}>
+            <AntdForm onSubmit={handleSubmit}>
                 <FormItem
-                    name="word"
+                    name={TITLE}
                     component={TextField}
-                    placeholder="Enter.."
+                    placeholder="Enter title"
                     disabled={isSubmitting}
                 />
                 <FormItem
-                    name="transfer"
+                    name={DESCRIPTION}
                     component={TextField}
-                    placeholder="Enter transfer"
+                    placeholder="Enter description"
                     disabled={isSubmitting}
                 />
                 <div>
@@ -27,9 +27,9 @@ const DictionaryForm = props => {
                         Add
                     </Button>
                 </div>
-            </Form>
+            </AntdForm>
         </div>
     )
 }
 
-export default DictionaryForm;
+export default Form;

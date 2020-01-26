@@ -1,36 +1,48 @@
 import React, { useState, useMemo, useCallback } from 'react';
-import { Modal } from 'antd';
 import {
     DictionariesStateContext,
     DictionariesActionsContext
 } from '../../contexts/DictionariesContext';
+import { CREATE, EDIT } from '../../constants/mode';
+
+const createValue = { mode: CREATE, values: {} }
+const editValue = { mode: EDIT, values: {} }
 
 const DictionariesProvider = props => {
     const [visible, setVisible] = useState(false);
+    const [params, setParams] = useState({});
 
-    const toggleModal = useCallback(() => {
-        setVisible(visible => !visible);
-    }, [setVisible])
+    const values = {
+        visible,
+        params
+    }
+
+    const openCreateModal = useCallback(() => {
+        setVisible(true);
+        setParams(createValue);
+    }, [])
+
+    const openEditModal = useCallback(params => {
+        setVisible(true);
+        setParams({ ...editValue, values: params });
+    }, []);
+
+    const closeModal = useCallback(() => {
+        setVisible(false);
+    }, []);
 
     const actions = useMemo(() => ({
-        toggleModal
+        openCreateModal,
+        openEditModal,
+        closeModal
     }), []);
 
+    console.log('params', params)
+
     return (
-        <DictionariesStateContext.Provider value={visible}>
+        <DictionariesStateContext.Provider value={values}>
             <DictionariesActionsContext.Provider value={actions}>
                 {props.children}
-                <Modal
-                    title="Vertically centered modal dialog"
-                    centered
-                    visible={visible}
-                    onOk={toggleModal}
-                    onCancel={toggleModal}
-                    >
-                    <p>some contents...</p>
-                    <p>some contents...</p>
-                    <p>some contents...</p>
-                </Modal>
             </DictionariesActionsContext.Provider>
         </DictionariesStateContext.Provider>
     )
