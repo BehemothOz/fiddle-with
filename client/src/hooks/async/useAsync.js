@@ -2,18 +2,19 @@ import React, { useCallback } from 'react';
 import * as action from '../../actions';
 import useLocalStorage from '../utils/useLocalStorage';
 import dictionary from '../../api/dictionary';
-import { reducer, initialState } from '../../reducers';
+import { reducer } from '../../reducers';
+import { initialState } from '../../api/state';
 
 const useAsync = options => {
     const { key } = options;
     if (!key) throw Error('key is required field for request');
 
-    const { method, url } = dictionary[key];
+    const { method, url, state: initial = initialState } = dictionary[key];
     if (!method || !url) throw Error('add method and url to dictionary object');
 
     const storage = useLocalStorage('token');
 
-    const [state, dispatch] = React.useReducer(reducer, initialState);
+    const [state, dispatch] = React.useReducer(reducer, initial);
 
     // TODO: temporary solution
     const addAuthorizationHeader = useCallback(() => {

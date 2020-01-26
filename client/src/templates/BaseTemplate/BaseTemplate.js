@@ -23,6 +23,7 @@ const BaseTemplate = props => {
         <>
             <Header>
                 <Layout>
+                    <Logout />
                     {/* <Switch />
                     <Logout /> */}
                 </Layout>
