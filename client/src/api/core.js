@@ -12,7 +12,10 @@ export const timeout = abort => new Promise(() => {
 
 export const request = method => (url, options = {}) => {
     console.log('request', url, options)
-    const fetch = abortableFetch(`${config.url}${url}`, {
+
+    const { query } = options;
+
+    const fetch = abortableFetch(`${config.url}${url}/${query ? query.id : ''}`, {
         method,
         headers: {
             "Content-Type": "application/json; charset=utf-8",

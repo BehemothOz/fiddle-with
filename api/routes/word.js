@@ -1,35 +1,36 @@
-// const express = require('express');
-// const router = express.Router();
-// const guard = require('./verifyToken');
+const express = require('express');
+const router = express.Router();
+const guard = require('./verifyToken');
 // const Dictionary = require('../models/dictionary');
-// const Word = require('../models/word');
+const Word = require('../models/word');
 // const User = require('../models/user');
 // const { WORD, TRANSFER } = require('../constants/dictionary');
 
-// router.get('/', guard, async (req, res) => {
-//     try {
+router.get('/:id', guard, async (req, res) => {
+    try {
 
-//         console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", req.query.d)
+        console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", req.params)
 
-//         const id = req.query.d;
+        const id = req.params.id;
 
-//         const aa = await Word.find({ dictionary: id });
+        const aa = await Word.find({ dictionary: id });
 
-//         console.log(aa)
-//             // .populate('word')
-//             // .exec(function (err, post) {
-//             //     if (err) console.log(err);
+        // console.log(aa)
+            // .populate('word')
+            // .exec(function (err, post) {
+            //     if (err) console.log(err);
 
-//             //     console.log(post)
-//             // });
+            //     console.log(post)
+            // });
 
-//         // const dictionary = await Dictionary.find({ user: req.body.id })
-//         // console.log(dictionary)
-//         res.status(200).json(aa);
-//     } catch (error) {
-//         next({ status: 400, body: error.message })
-//     }
-// });
+        // const dictionary = await Dictionary.find({ user: req.body.id })
+        // console.log(dictionary)
+        res.status(200).json(aa);
+        // res.status(200).send(100);
+    } catch (error) {
+        next({ status: 400, body: error.message })
+    }
+});
 
 // router.post('/', guard, async (req, res) => {
 //     // TODO: add validation
@@ -59,4 +60,4 @@
 //     }
 // })
 
-// module.exports = router;
+module.exports = router;
