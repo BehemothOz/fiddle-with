@@ -1,4 +1,8 @@
 import React from 'react';
+import {
+    Link,
+    useRouteMatch
+  } from "react-router-dom";
 import { Button, Paper } from '../../../../shared';
 import styles from './styles.module.scss';
 
@@ -8,12 +12,13 @@ const Item = props => {
     // TODO: Need optimization!
 
     const edit = () => onEditClick({ title, description });
-
+    const { url } = useRouteMatch();
     return (
         <Paper noindent>
             <div className={styles.root}>
                 <div className={styles.header}>
                     <div className={styles.title}>{title}</div>
+                    <Link to={`${url}/${props._id}`}>Go</Link>
                     <Button type="primary" size="small" onClick={edit}>Edit</Button>
                 </div>
                 <div className={styles.body}>

@@ -9,7 +9,7 @@ const getRoutes = isAuth => {
         console.log('SELECT ROUTES: BaseTemplate')
         return (
             <Switch>
-                <Route path="/home" component={HomePage} exact />
+                <Route path='/home' component={HomePage} />
                 <Redirect to="/home" />
             </Switch>
         )
