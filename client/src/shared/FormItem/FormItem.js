@@ -1,10 +1,9 @@
 import React from 'react';
 import { useField, useFormikContext } from 'formik';
-import { Form } from 'antd';
 import useValidateStatus from '../../hooks/useValidateStatus';
 
 const FormItem = props => {
-    const { name, component: Component, help, ...rest } = props;
+    const { name, component: Component, helperText, ...rest } = props;
 
     const [ field, meta ] = useField(name);
 
@@ -17,16 +16,12 @@ const FormItem = props => {
         status[name]
     );
 
-    const helperText = help || message;
+    const help = message || helperText;
 
     return (
-        <Form.Item
-            hasFeedback
-            validateStatus={validateStatus}
-            help={helperText}
-        >
-            <Component {...field} {...rest} />
-        </Form.Item>
+        <div style={{ margin: '8px 0 8px' }}>
+            <Component {...field} {...rest} helperText={help} />
+        </div>
     )
 }
 

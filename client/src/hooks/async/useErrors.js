@@ -1,5 +1,5 @@
 import { useHistory } from "react-router-dom";
-import { message as notification } from 'antd';
+// import { message as notification } from 'antd';
 
 const useErrors = () => {
     const history = useHistory();
@@ -10,7 +10,7 @@ const useErrors = () => {
         switch (status) {
             case 400: {
                 console.log('This is 400 error');
-                notification.error(body.message);
+                // notification.error(body.message);
                 break;
             }
             case 401: {
@@ -27,7 +27,7 @@ const useErrors = () => {
             }
             default: {
                 console.log('This is 500 error');
-                notification.error(message);
+                // notification.error(message);
             }
         }
     }

@@ -1,7 +1,8 @@
 import React from 'react';
+import { Form } from 'formik';
 import { Link } from 'react-router-dom';
-import { Form, Icon } from 'antd';
-import { Button, TextField, FormItem } from '../../../../shared';
+import Button from '@material-ui/core/Button';
+import { TextField, FormItem } from '../../../../shared';
 import { USERNAME, EMAIL, PASSWORD } from '../../../../constants/auth';
 import styles from './styles.module.scss';
 
@@ -14,14 +15,12 @@ const RegistrationForm = props => {
             <FormItem
                 name={USERNAME}
                 component={TextField}
-                prefix={<Icon type="user" className={styles.iconInput} />}
                 placeholder="Username"
                 disabled={isSubmitting}
             />
             <FormItem
                 name={EMAIL}
                 component={TextField}
-                prefix={<Icon type="mail" className={styles.iconInput} />}
                 placeholder="Email"
                 disabled={isSubmitting}
             />
@@ -29,7 +28,6 @@ const RegistrationForm = props => {
                 name={PASSWORD}
                 type="password"
                 component={TextField}
-                prefix={<Icon type="lock" className={styles.iconInput} />}
                 placeholder="Password"
                 autoComplete="new-password"
                 disabled={isSubmitting}
@@ -41,10 +39,25 @@ const RegistrationForm = props => {
                 />
             </Form.Item> */}
             <div className={styles.buttons}>
-                <Button type="primary" htmlType="submit" className={styles.loginButton} block>
+                <Button
+                    className={styles.loginButton}
+                    type="submit"
+                    variant="contained"
+                    color="primary"
+                    size="small"
+                    disabled={isSubmitting}
+                    fullWidth
+                >
                     Registration
                 </Button>
-                <Link to="/" className={styles.link}>Cancel</Link>
+                <Button
+                    component={Link}
+                    to="/"
+                    size="small"
+                    fullWidth
+                >
+                    Cancel
+                </Button>
             </div>
         </Form>
     )

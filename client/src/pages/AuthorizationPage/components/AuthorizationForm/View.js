@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Form, Icon } from 'antd';
-import { Button, TextField, FormItem } from '../../../../shared';
+import { Form } from 'formik';
+import Button from '@material-ui/core/Button';
+// import { Form, Icon } from 'antd';
+import { FormItem, TextField } from '../../../../shared';
 import { EMAIL, PASSWORD } from '../../../../constants/auth';
 import styles from './styles.module.scss';
 
@@ -13,29 +15,38 @@ const AuthorizationForm = props => {
             <FormItem
                 name={EMAIL}
                 component={TextField}
-                prefix={<Icon type="user" className={styles.iconInput} />}
                 placeholder="Username"
                 autoComplete="username"
+                helperText="la la la"
             />
             <FormItem
                 name={PASSWORD}
-                type="password"
                 component={TextField}
-                prefix={<Icon type="lock" className={styles.iconInput} />}
+                type="password"
                 placeholder="Password"
                 autoComplete="current-password"
+                helperText="la la la"
             />
             <div className={styles.buttons}>
                 <Button
                     className={styles.loginButton}
-                    type="primary"
-                    htmlType="submit"
-                    loading={props.fetching}
-                    block
+                    type="submit"
+                    variant="contained"
+                    color="primary"
+                    size="small"
+                    disabled={props.fetching}
+                    fullWidth
                 >
                     Log in
                 </Button>
-                <Link to="/registration" className={styles.link}>Registration</Link>
+                <Button
+                    component={Link}
+                    to="/registration"
+                    size="small"
+                    fullWidth
+                >
+                    Registration
+                </Button>
             </div>
         </Form>
     )

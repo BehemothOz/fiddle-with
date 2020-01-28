@@ -10,14 +10,14 @@ const HomePage = () => {
     console.log(path, url)
     return (
         <BaseTemplate>
-             <Switch>
+             {/* <Switch>
                 <Route path={`${path}/:id`} component={Dictionary} />
                 <Route exact path={path}>
                     <DictionariesProvider>
                         <Dictionaries />
                     </DictionariesProvider>
                 </Route>
-            </Switch>
+            </Switch> */}
         </BaseTemplate>
     )
 }

@@ -1,23 +1,23 @@
-import React, { useContext } from 'react';
-import { Switch as AntSwitch } from 'antd';
-import { ThemeActionContext } from '../../contexts';
+// import React, { useContext } from 'react';
+// import { Switch as AntSwitch } from 'antd';
+// import { ThemeActionContext } from '../../contexts';
 
-import usePrevious from '../../hooks/utils/usePrevious';
+// import usePrevious from '../../hooks/utils/usePrevious';
 
-const Switch = () => {
-    console.count('<SWITCH /> RENDER');
+// const Switch = () => {
+//     console.count('<SWITCH /> RENDER');
 
-    const actions = useContext(ThemeActionContext);
+//     const actions = useContext(ThemeActionContext);
 
-    const prevAction = usePrevious(actions);
+//     const prevAction = usePrevious(actions);
 
-    console.log('equal action to switch', prevAction === actions)
+//     console.log('equal action to switch', prevAction === actions)
 
-    const handleChange = (value = true) => {
-        actions.toggleTheme(value)
-    }
+//     const handleChange = (value = true) => {
+//         actions.toggleTheme(value)
+//     }
 
-    return <AntSwitch onChange={handleChange} />;
-}
+//     return <AntSwitch onChange={handleChange} />;
+// }
 
-export default Switch;
+// export default Switch;

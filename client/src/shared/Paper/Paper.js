@@ -1,20 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
-import styles from './styles.module.scss';
+import MuiPaper from '@material-ui/core/Paper';
+import useStyles from './styles';
 
 const Paper = props => {
+    const styles = useStyles();
     const { className, noindent, children } = props;
+    console.log(styles)
     return (
-        <section
+        <MuiPaper
             className={
-                cn(styles.paper, className, {
-                    [styles.padding]: !noindent
+                cn(className, {
+                    [styles.indent]: !noindent
                 })
             }
         >
             {children}
-        </section>
+        </MuiPaper>
     )
 }
 

@@ -1,40 +1,40 @@
-import React, { useCallback } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { Icon } from 'antd';
-import styles from './styles.module.scss';
+// import React, { useCallback } from 'react';
+// import { Link, useHistory } from 'react-router-dom';
+// import { Icon } from 'antd';
+// import styles from './styles.module.scss';
 
-const { root, icon, title, link } = styles;
+// const { root, icon, title, link } = styles;
 
-const REDIRECT_TIME = 5;
-const TIMEOUT = 1000;
+// const REDIRECT_TIME = 5;
+// const TIMEOUT = 1000;
 
-const RegistrationComplete = () => {
-    const [ time, setTime ] = React.useState(REDIRECT_TIME);
-    const history = useHistory();
+// const RegistrationComplete = () => {
+//     const [ time, setTime ] = React.useState(REDIRECT_TIME);
+//     const history = useHistory();
 
-    const decreaseTime = useCallback(() => setTime(time => time - 1), []);
+//     const decreaseTime = useCallback(() => setTime(time => time - 1), []);
 
-    React.useEffect(() => {
-        const timeId = setTimeout(() => {
-            if (time <= 1) {
-                clearTimeout(timeId);
-                history.push('/');
-            }
-            else decreaseTime();
-        }, TIMEOUT);
-        return () => clearTimeout(timeId);
-    }, [time, decreaseTime]);
+//     React.useEffect(() => {
+//         const timeId = setTimeout(() => {
+//             if (time <= 1) {
+//                 clearTimeout(timeId);
+//                 history.push('/');
+//             }
+//             else decreaseTime();
+//         }, TIMEOUT);
+//         return () => clearTimeout(timeId);
+//     }, [time, decreaseTime]);
 
-    return (
-        <div className={root}>
-            <Icon className={icon} type="heart" theme="twoTone" />
-            <h3 className={title}>Complete</h3>
-            <span>Redirect to login after {time}...</span>
-            <div className={link}>
-                <Link to="/">Login</Link>
-            </div>
-        </div>
-    )
-}
+//     return (
+//         <div className={root}>
+//             <Icon className={icon} type="heart" theme="twoTone" />
+//             <h3 className={title}>Complete</h3>
+//             <span>Redirect to login after {time}...</span>
+//             <div className={link}>
+//                 <Link to="/">Login</Link>
+//             </div>
+//         </div>
+//     )
+// }
 
-export default RegistrationComplete;
+// export default RegistrationComplete;

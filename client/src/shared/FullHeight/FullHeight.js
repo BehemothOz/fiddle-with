@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
-import styles from './styles.module.scss';
+import useStyles from './styles';
 
 const FullHeight = props => {
+    const styles = useStyles();
     const { className, children } = props;
+
     return <div className={cn(styles.root, className)}>{children}</div>;
 }
 
