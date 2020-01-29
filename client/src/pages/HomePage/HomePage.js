@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, Redirect, useRouteMatch } from 'react-router-dom'
+import { Switch, Route, useRouteMatch } from 'react-router-dom'
 import BaseTemplate from '../../templates/BaseTemplate';
 import Dictionaries from '../../components/Dictionaries';
 import DictionariesProvider from '../../providers/DictionariesProvider';
@@ -7,17 +7,17 @@ import Dictionary from '../../components/Dictionary';
 
 const HomePage = () => {
     let { path, url } = useRouteMatch();
-    console.log(path, url)
+
     return (
         <BaseTemplate>
-             {/* <Switch>
+             <Switch>
                 <Route path={`${path}/:id`} component={Dictionary} />
                 <Route exact path={path}>
                     <DictionariesProvider>
                         <Dictionaries />
                     </DictionariesProvider>
                 </Route>
-            </Switch> */}
+            </Switch>
         </BaseTemplate>
     )
 }

@@ -3,5 +3,5 @@ export { default as FullHeight } from './FullHeight';
 export { default as Logo } from './Logo';
 export { default as FormItem } from './FormItem';
 export { default as TextField } from './TextField';
-// export { default as Switch } from './Switch';
-// export { default as Logout } from './Logout';
+export { default as Switch } from './Switch';
+export { default as Logout } from './Logout';

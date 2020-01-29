@@ -1,5 +1,5 @@
 import React, { useContext, useCallback } from 'react';
-import { Button } from '../../../../shared';
+import Button from '@material-ui/core/Button';
 import Item from '../Item';
 import { DictionariesActionsContext } from '../../../../contexts/DictionariesContext';
 import styles from './styles.module.scss';

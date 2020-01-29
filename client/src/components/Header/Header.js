@@ -1,16 +1,21 @@
 import React, { useContext } from 'react';
 import cn from 'classnames';
-import { ThemeStateContext } from '../../contexts';
+import AppBar from '@material-ui/core/AppBar';
+// import { ThemeStateContext } from '../../contexts';
 import styles from './styles.module.scss';
+
+import Toolbar from '@material-ui/core/Toolbar';
 
 const Header = props => {
     console.count('<HEADER /> RENDER');
-    const theme = useContext(ThemeStateContext);
+    // const theme = useContext(ThemeStateContext);
 
     return (
-        <header className={cn(styles.root, styles[`theme-${theme}`])}>
-            {props.children}
-        </header>
+        <AppBar className={cn(styles.root)}>
+            <Toolbar>
+                {props.children}
+            </Toolbar>
+        </AppBar>
     )
 }
 

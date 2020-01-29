@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import useFetch from '../../hooks/async/useFetch';
 import { DICTIONARY_GET } from '../../api/keys';
-import Empty from './components/Empty';
+// import Empty from './components/Empty';
 import Rows from './components/Rows';
 import FormContainer from './components/FormContainer';
 
@@ -21,8 +21,8 @@ const Dictionaries = () => {
     console.count('<Dictionaries />')
     return (
         <>
-            {!isEmpty ? <Rows dictionaries={response} /> : <Empty />}
-            <FormContainer getDictionaries={request} />
+            {!isEmpty ? <Rows dictionaries={response} /> : 'Empty'}
+            {/* <FormContainer getDictionaries={request} /> */}
         </>
     )
 }

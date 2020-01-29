@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
-import { Empty as AntEmpty } from 'antd';
-import { Button, Paper } from '../../../../shared';
+import { Paper } from '../../../../shared';
 import { DictionariesActionsContext } from '../../../../contexts/DictionariesContext';
 
 const Empty = () => {
@@ -9,9 +8,9 @@ const Empty = () => {
 
     return (
         <Paper>
-            <AntEmpty description="You don't have a dictionary yet">
+            {/* <AntEmpty description="You don't have a dictionary yet">
                 <Button type="primary" onClick={handleClick}>Create Dictionary</Button>
-            </AntEmpty>
+            </AntEmpty> */}
         </Paper>
     )
 }
