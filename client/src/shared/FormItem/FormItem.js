@@ -10,7 +10,7 @@ const FormItem = props => {
     const { status = {} } = useFormikContext();
     const { error, touched } = meta;
 
-    const [ validateStatus, message ] = useValidateStatus(
+    const [ hasError, message ] = useValidateStatus(
         error,
         touched,
         status[name]
@@ -18,11 +18,7 @@ const FormItem = props => {
 
     const help = message || helperText;
 
-    return (
-        <div style={{ margin: '8px 0 8px' }}>
-            <Component {...field} {...rest} helperText={help} />
-        </div>
-    )
+    return <Component {...field} {...rest} helperText={help} error={hasError} />
 }
 
 export default FormItem;
