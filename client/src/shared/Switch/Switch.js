@@ -1,23 +1,24 @@
 import React, { useContext } from 'react';
 import MuiSwitch from '@material-ui/core/Switch';
-import { ThemeActionContext } from '../../contexts';
+import { ThemeStateContext, ThemeActionContext } from '../../contexts';
 
 import usePrevious from '../../hooks/utils/usePrevious';
 
 const Switch = () => {
     console.count('<SWITCH /> RENDER');
 
+    const theme = useContext(ThemeStateContext);
     const actions = useContext(ThemeActionContext);
 
     const prevAction = usePrevious(actions);
-
+    console.log(theme)
     console.log('equal action to switch', prevAction === actions)
 
     const handleChange = (_, value) => {
         actions.toggleTheme(value)
     }
 
-    return <MuiSwitch onChange={handleChange} />;
+    return <MuiSwitch onChange={handleChange} checked={theme} />;
 }
 
 export default Switch;

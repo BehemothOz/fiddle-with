@@ -1,43 +1,46 @@
 import React, { useState, useMemo } from 'react';
-import { createMuiTheme, makeStyles, ThemeProvider as ThemeProvider2 } from '@material-ui/core/styles';
+import { createMuiTheme, ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
 import { ThemeStateContext, ThemeActionContext } from '../../contexts';
-import { LIGHT, DARK } from '../../constants/theme';
-import purple from '@material-ui/core/colors/purple';
-import green from '@material-ui/core/colors/green';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import useLocalStorage from '../../hooks/utils/useLocalStorage';
 
-const theme3 = createMuiTheme({
+const darkTheme = createMuiTheme({
     palette: {
         type: 'dark'
     },
 });
 
-const theme2 = createMuiTheme({
+const lightTheme = createMuiTheme({
     palette: {
         type: 'light'
     },
 });
 
+const selectTheme = value => value ? darkTheme : lightTheme;
+
 const ThemeProvider = props => {
-    const [theme, setTheme] = useState(theme2);
+    const storage = useLocalStorage('theme', false);
+    const [theme, setTheme] = useState(() => selectTheme(storage.value));
 
     const toggleTheme = value => {
-        console.log(value)
-        const nextValue = value ? theme2 : theme3;
-        setTheme(nextValue);
+        const nextTheme = selectTheme(value);
+        setTheme(nextTheme);
+        storage.set(value);
     };
 
     const actions = useMemo(() => ({
         toggleTheme
     }), []);
-    console.log(theme)
+
     return (
-        <ThemeProvider2 theme={theme}>
-            <ThemeActionContext.Provider value={actions}>
-                <CssBaseline />
-                {props.children}
-            </ThemeActionContext.Provider>
-        </ThemeProvider2>
+        <MuiThemeProvider theme={theme}>
+            <ThemeStateContext.Provider value={storage.value}>
+                <ThemeActionContext.Provider value={actions}>
+                    <CssBaseline />
+                    {props.children}
+                </ThemeActionContext.Provider>
+            </ThemeStateContext.Provider>
+        </MuiThemeProvider>
     )
 }
 
