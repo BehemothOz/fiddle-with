@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import RegistrationForm from './components/RegistrationForm';
-// import RegistrationComplete from './components/RegistrationComplete';
+import RegistrationComplete from './components/RegistrationComplete';
 import useSubmit from '../../hooks/async/useSubmit';
 import AuthTemplate from '../../templates/AuthTemplate';
 import { REGISTRATION } from '../../api/keys';
@@ -17,10 +17,10 @@ const RegistrationPage = () => {
 
     const [state, submit] = useSubmit({ key: REGISTRATION });
 
-    if (complete) {
+    if (!complete) {
         return (
             <AuthTemplate>
-                {/* <RegistrationComplete /> */}
+                <RegistrationComplete />
             </AuthTemplate>
         )
     }
