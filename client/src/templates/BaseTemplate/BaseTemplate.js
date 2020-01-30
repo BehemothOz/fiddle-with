@@ -18,7 +18,7 @@ const BaseTemplate = props => {
         <>
             <Header>
                 <Container maxWidth="md">
-                    <Toolbar>
+                    <Toolbar disableGutters>
                         <Typography variant="h6" className={styles.title}>Dictionary</Typography>
                         <Switch />
                         <Logout />
