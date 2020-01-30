@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { createMuiTheme, ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
 import { ThemeStateContext, ThemeActionContext } from '../../contexts';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -20,11 +20,8 @@ const selectTheme = value => value ? darkTheme : lightTheme;
 
 const ThemeProvider = props => {
     const storage = useLocalStorage('theme', false);
-    const [theme, setTheme] = useState(() => selectTheme(storage.value));
 
     const toggleTheme = value => {
-        const nextTheme = selectTheme(value);
-        setTheme(nextTheme);
         storage.set(value);
     };
 
@@ -33,7 +30,7 @@ const ThemeProvider = props => {
     }), []);
 
     return (
-        <MuiThemeProvider theme={theme}>
+        <MuiThemeProvider theme={selectTheme(storage.value)}>
             <ThemeStateContext.Provider value={storage.value}>
                 <ThemeActionContext.Provider value={actions}>
                     <CssBaseline />
