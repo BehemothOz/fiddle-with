@@ -1,18 +1,14 @@
 import React, { useEffect } from 'react';
-import useFetch from '../../hooks/async/useFetch';
-import { DICTIONARY_GET } from '../../api/keys';
-// import Empty from './components/Empty';
+import Empty from './components/Empty';
 import Rows from './components/Rows';
 import FormContainer from './components/FormContainer';
-import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
-
 import AddButton from './components/AddButton';
-
-import useStyles from './styles';
+import useFetch from '../../hooks/async/useFetch';
+import { DICTIONARY_GET } from '../../api/keys';
 
 const Dictionaries = () => {
-    const styles = useStyles();
+    console.count('<Dictionaries />')
+
     const [state, request] = useFetch({ key: DICTIONARY_GET });
     useEffect(() => {
         request()
@@ -24,12 +20,11 @@ const Dictionaries = () => {
         return <div>Wrong!</div>
     }
 
-    const isEmpty = !response.length && !fetching;
-    console.count('<Dictionaries />')
+    const isEmpty = Boolean(response.length);
     return (
         <>
-            {!isEmpty ? <Rows dictionaries={response} /> : 'Empty'}
-            <AddButton />
+            {isEmpty && !fetching ? <Rows dictionaries={response} /> : <Empty />}
+            {isEmpty && <AddButton />}
             <FormContainer getDictionaries={request} />
         </>
     )

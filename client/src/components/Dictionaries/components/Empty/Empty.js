@@ -1,17 +1,20 @@
 import React, { useContext } from 'react';
-import { Paper } from '../../../../shared';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
 import { DictionariesActionsContext } from '../../../../contexts/DictionariesContext';
+import useStyles from './styles';
 
 const Empty = () => {
+    const styles = useStyles();
     const actions = useContext(DictionariesActionsContext);
-    const handleClick = () => actions.openModal({});
+    const handleClick = () => actions.openCreateModal();
 
     return (
-        <Paper>
-            {/* <AntEmpty description="You don't have a dictionary yet">
-                <Button type="primary" onClick={handleClick}>Create Dictionary</Button>
-            </AntEmpty> */}
-        </Paper>
+        <Box className={styles.root}>
+            <Typography gutterBottom color="textSecondary">You don't have a dictionary yet</Typography>
+            <Button variant="contained" color="primary" size="small" onClick={handleClick}>Create Dictionary</Button>
+        </Box>
     )
 }
 
