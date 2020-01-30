@@ -6,7 +6,7 @@ import DictionariesProvider from '../../providers/DictionariesProvider';
 import Dictionary from '../../components/Dictionary';
 
 const HomePage = () => {
-    let { path, url } = useRouteMatch();
+    let { path } = useRouteMatch();
 
     return (
         <BaseTemplate>
