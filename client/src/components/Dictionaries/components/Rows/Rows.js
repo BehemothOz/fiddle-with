@@ -13,7 +13,7 @@ const Row = props => {
 
     return (
         <>
-            <Button type="primary" block onClick={handleCreateClick}>Add</Button>
+            {/* <Button type="primary" block onClick={handleCreateClick}>Add</Button> */}
             {dictionaries.map(dictionary => {
                 return (
                     <div key={dictionary._id} className={styles.row}>
