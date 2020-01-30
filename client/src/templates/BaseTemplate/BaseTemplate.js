@@ -1,21 +1,13 @@
 import React from 'react';
 import Container from '@material-ui/core/Container';
+import Toolbar from '@material-ui/core/Toolbar';
 import Header from '../../components/Header';
 import { Switch, Logout } from '../../shared';
-import styles from './styles.module.scss';
+import useStyles from './styles';
 
 const Layout = props => {
+    const styles = useStyles();
     return <div className={styles.layout}>{props.children}</div>
-}
-
-const Content = props => {
-    return (
-        <main className={styles.content}>
-            <Layout>
-                {props.children}
-            </Layout>
-        </main>
-    )
 }
 
 const BaseTemplate = props => {
@@ -23,15 +15,14 @@ const BaseTemplate = props => {
     return (
         <>
             <Header>
-                {/* <Layout> */}
-                    {/* <Logout /> */}
-                    {/* <Switch />
-                    <Logout /> */}
                 <Switch />
                 <Logout />
             </Header>
+            <Toolbar />
             <Container maxWidth="sm">
-                {props.children}
+                <Layout>
+                    {props.children}
+                </Layout>
             </Container>
         </>
     )
