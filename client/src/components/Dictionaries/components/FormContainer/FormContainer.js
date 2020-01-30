@@ -1,6 +1,9 @@
 import React, { useCallback, useContext } from 'react';
-// import { Modal } from 'antd';
+import Dialog from '@material-ui/core/Dialog';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import DialogContent from '@material-ui/core/DialogContent';
 import Form from '../Form';
+import Transition from '../Transition';
 import useSubmit from '../../../../hooks/async/useSubmit';
 import {
     DictionariesStateContext,
@@ -23,22 +26,23 @@ const FormContainer = React.memo(props => {
     console.count('<FormContainer />')
 
     const { mode, values } = params;
-
     return (
-        // <Modal
-        //     title={`${mode === EDIT ? 'Update' : 'Create'} dictionaty`}
-        //     centered
-        //     visible={visible}
-        //     onCancel={actions.closeModal}
-        //     destroyOnClose
-        // >
-            <Form
-                initialValue={values}
-                fetching={state.fetching}
-                onSubmit={submit}
-                onSubmitSuccess={handleSubmitSuccess}
-            />
-        // </Modal>
+        <Dialog
+            open={visible}
+            maxWidth="xs"
+            onClose={actions.closeModal}
+            TransitionComponent={Transition}
+        >
+            <DialogTitle>{`${mode === EDIT ? 'Update' : 'Create'} dictionaty`}</DialogTitle>
+            <DialogContent>
+                <Form
+                    initialValue={values}
+                    fetching={state.fetching}
+                    onSubmit={submit}
+                    onSubmitSuccess={handleSubmitSuccess}
+                />
+            </DialogContent>
+        </Dialog>
     )
 })
 

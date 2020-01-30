@@ -30,7 +30,7 @@ const Dictionaries = () => {
         <>
             {!isEmpty ? <Rows dictionaries={response} /> : 'Empty'}
             <AddButton />
-            {/* <FormContainer getDictionaries={request} /> */}
+            <FormContainer getDictionaries={request} />
         </>
     )
 }
