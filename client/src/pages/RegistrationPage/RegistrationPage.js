@@ -17,7 +17,7 @@ const RegistrationPage = () => {
 
     const [state, submit] = useSubmit({ key: REGISTRATION });
 
-    if (!complete) {
+    if (complete) {
         return (
             <AuthTemplate>
                 <RegistrationComplete />

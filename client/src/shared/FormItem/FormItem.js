@@ -4,7 +4,6 @@ import useValidateStatus from '../../hooks/useValidateStatus';
 
 const FormItem = props => {
     const { name, component: Component, helperText, ...rest } = props;
-
     const [ field, meta ] = useField(name);
 
     const { status = {} } = useFormikContext();

@@ -19,9 +19,8 @@ const RegistrationForm = props => {
                     name={USERNAME}
                     component={TextField}
                     label="Username"
-                    helperText="Minimum 2 characters"
+                    helperText="Least 2 characters"
                     disabled={isSubmitting}
-                    required
                 />
             </Grid>
             <Grid item xs={12}>
@@ -40,7 +39,7 @@ const RegistrationForm = props => {
                     component={TextField}
                     label="Password"
                     autoComplete="new-password"
-                    helperText="Minimum 8 characters"
+                    helperText="Least 2 characters"
                     disabled={isSubmitting}
                 />
             </Grid>

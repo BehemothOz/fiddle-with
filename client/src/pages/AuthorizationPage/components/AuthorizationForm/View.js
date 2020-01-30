@@ -5,10 +5,9 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import { FormItem, TextField } from '../../../../shared';
 import { EMAIL, PASSWORD } from '../../../../constants/auth';
-import styles from './styles.module.scss';
 
 const AuthorizationForm = props => {
-    const { handleSubmit } = props;
+    const { handleSubmit, isSubmitting } = props;
 
     return (
         <Grid container component={Form} onSubmit={handleSubmit} spacing={2}>
@@ -18,6 +17,7 @@ const AuthorizationForm = props => {
                     component={TextField}
                     label="Username"
                     autoComplete="username"
+                    disabled={isSubmitting}
                 />
             </Grid>
             <Grid item xs={12}>
@@ -27,18 +27,18 @@ const AuthorizationForm = props => {
                     type="password"
                     label="Password"
                     autoComplete="current-password"
+                    disabled={isSubmitting}
                 />
             </Grid>
             <Grid item xs={12}>
                 <Grid container spacing={1}>
                     <Grid item xs={12}>
                         <Button
-                            className={styles.loginButton}
                             type="submit"
                             variant="contained"
                             color="primary"
                             size="small"
-                            disabled={props.fetching}
+                            disabled={isSubmitting}
                             fullWidth
                         >
                             Log in
@@ -49,6 +49,7 @@ const AuthorizationForm = props => {
                             component={Link}
                             to="/registration"
                             size="small"
+                            disabled={isSubmitting}
                             fullWidth
                         >
                             Registration
