@@ -20,11 +20,15 @@ const Dictionaries = () => {
         return <div>Wrong!</div>
     }
 
-    const isEmpty = Boolean(response.length);
+    if (fetching) {
+        return 'loading...'
+    }
+
+    const isEmpty = response.length === 0;
     return (
         <>
-            {isEmpty && !fetching ? <Rows dictionaries={response} /> : <Empty />}
-            {isEmpty && <AddButton />}
+            {!isEmpty ? <Rows dictionaries={response} /> : <Empty />}
+            {!isEmpty && <AddButton />}
             <FormContainer getDictionaries={request} />
         </>
     )
