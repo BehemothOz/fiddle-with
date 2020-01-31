@@ -8,7 +8,7 @@ const useFetch = options => {
 
     const request = useCallback(args => {
         return trigger(args).catch(handlerErrors);
-    }, [trigger])
+    }, [trigger, handlerErrors])
 
     return [state, request];
 }

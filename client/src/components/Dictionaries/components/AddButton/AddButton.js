@@ -5,17 +5,15 @@ import useStyles from './styles';
 
 import { DictionariesActionsContext } from '../../../../contexts/DictionariesContext';
 
-const AddButton = props => {
+const AddButton = () => {
     const styles = useStyles();
     const actions = useContext(DictionariesActionsContext);
-
-    console.log(actions)
 
     const handleClick = () => actions.openCreateModal();
 
     return (
         <Fab color="primary" className={styles.fab} onClick={handleClick}>
-        <AddIcon />
+            <AddIcon />
         </Fab>
     )
 }

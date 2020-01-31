@@ -21,13 +21,11 @@ const selectTheme = value => value ? darkTheme : lightTheme;
 const ThemeProvider = props => {
     const storage = useLocalStorage('theme', false);
 
-    const toggleTheme = value => {
-        storage.set(value);
-    };
-
     const actions = useMemo(() => ({
-        toggleTheme
-    }), []);
+        toggleTheme: value => {
+            storage.set(value);
+        }
+    }), [storage]);
 
     return (
         <MuiThemeProvider theme={selectTheme(storage.value)}>

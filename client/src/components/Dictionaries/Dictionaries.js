@@ -10,9 +10,7 @@ const Dictionaries = () => {
     console.count('<Dictionaries />')
 
     const [state, request] = useFetch({ key: DICTIONARY_GET });
-    useEffect(() => {
-        request()
-    }, []);
+    useEffect(() => { request() }, [request]);
 
     const { response, fetching, errors } = state;
 

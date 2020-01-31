@@ -13,6 +13,8 @@ import { DICTIONARY_POST } from '../../../../api/keys';
 import { EDIT } from '../../../../constants/mode';
 
 const FormContainer = React.memo(props => {
+    const { getDictionaries } = props;
+
     const { visible, params } = useContext(DictionariesStateContext);
     const actions = useContext(DictionariesActionsContext);
 
@@ -20,8 +22,8 @@ const FormContainer = React.memo(props => {
 
     const handleSubmitSuccess = useCallback(() => {
         actions.closeModal();
-        props.getDictionaries();
-    }, []);
+        getDictionaries();
+    }, [actions, getDictionaries]);
 
     console.count('<FormContainer />')
 

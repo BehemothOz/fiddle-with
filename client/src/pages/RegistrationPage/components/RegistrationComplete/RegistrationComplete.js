@@ -24,7 +24,7 @@ const RegistrationComplete = () => {
             else decreaseTime();
         }, TIMEOUT);
         return () => clearTimeout(timeId);
-    }, [time, decreaseTime]);
+    }, [time, decreaseTime, history]);
 
     return (
         <div className={root}>

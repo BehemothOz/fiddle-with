@@ -29,14 +29,13 @@ const useAsync = options => {
 
 
     const trigger = useCallback((args = {}) => {
-        console.log('useAsync args', args);
         const { onSuccess, onError, ...rest } = args;
 
         const requestOptions = {
             ...addAuthorizationHeader(),
             ...rest
         }
-        console.log('requestOptions', requestOptions);
+
         dispatch(action.request());
 
         return method(url, requestOptions)
@@ -52,7 +51,7 @@ const useAsync = options => {
 
                 throw error;
             });
-    }, [dispatch, addAuthorizationHeader, method]);
+    }, [dispatch, addAuthorizationHeader, method, url]);
 
     return [state, trigger];
 }

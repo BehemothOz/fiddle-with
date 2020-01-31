@@ -35,9 +35,7 @@ const DictionariesProvider = props => {
         openCreateModal,
         openEditModal,
         closeModal
-    }), []);
-
-    console.log('params', params)
+    }), [openCreateModal, openEditModal, closeModal]);
 
     return (
         <DictionariesStateContext.Provider value={values}>
