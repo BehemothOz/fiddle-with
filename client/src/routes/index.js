@@ -3,15 +3,18 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import AuthorizationPage from '../pages/AuthorizationPage';
 import RegistrationPage from '../pages/RegistrationPage';
 import HomePage from '../pages/HomePage';
+import BaseTemplate from '../templates/BaseTemplate'
 
 const getRoutes = isAuth => {
     if (isAuth) {
         console.log('SELECT ROUTES: BaseTemplate')
         return (
-            <Switch>
-                <Route path='/home' component={HomePage} />
-                <Redirect to="/home" />
-            </Switch>
+            <BaseTemplate>
+                <Switch>
+                    <Route path='/home' component={HomePage} />
+                    <Redirect to="/home" />
+                </Switch>
+            </BaseTemplate>
         )
     }
 

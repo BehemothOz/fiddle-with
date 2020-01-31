@@ -12,7 +12,6 @@ const Layout = props => {
 }
 
 const BaseTemplate = props => {
-    // console.count('<BaseTemplate /> RENDER');
     const styles = useStyles();
     return (
         <>

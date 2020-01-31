@@ -5,8 +5,6 @@ import { ThemeStateContext, ThemeActionContext } from '../../contexts';
 // import usePrevious from '../../hooks/utils/usePrevious';
 
 const Switch = () => {
-    console.count('<SWITCH /> RENDER');
-
     const theme = useContext(ThemeStateContext);
     const actions = useContext(ThemeActionContext);
 

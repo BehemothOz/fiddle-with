@@ -25,8 +25,6 @@ const FormContainer = React.memo(props => {
         getDictionaries();
     }, [actions, getDictionaries]);
 
-    console.count('<FormContainer />')
-
     const { mode, values } = params;
     return (
         <Dialog

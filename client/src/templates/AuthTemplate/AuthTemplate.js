@@ -3,7 +3,6 @@ import { FullHeight, Paper, Logo } from '../../shared';
 import useStyles from './styles';
 
 const AuthTemplate = props => {
-    console.count('<AuthTemplate /> RENDER');
     const styles = useStyles();
 
     return (

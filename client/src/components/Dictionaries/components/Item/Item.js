@@ -17,8 +17,6 @@ const fomatDate = date => new Date(date).toUTCString()
 const Item = props => {
     const { title, description, date, onEditClick } = props;
 
-    // TODO: Need optimization!
-
     const { url } = useRouteMatch();
 
     const history = useHistory();

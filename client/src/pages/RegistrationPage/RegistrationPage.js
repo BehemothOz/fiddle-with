@@ -6,8 +6,6 @@ import AuthTemplate from '../../templates/AuthTemplate';
 import { REGISTRATION } from '../../api/keys';
 
 const RegistrationPage = () => {
-    console.count('<RegistrationPage /> RENDER');
-
     const [complete, setComplete] = React.useState(false);
 
     const handleSubmitSuccess = useCallback(() => {

@@ -7,8 +7,6 @@ import useFetch from '../../hooks/async/useFetch';
 import { DICTIONARY_GET } from '../../api/keys';
 
 const Dictionaries = () => {
-    console.count('<Dictionaries />')
-
     const [state, request] = useFetch({ key: DICTIONARY_GET });
     useEffect(() => { request() }, [request]);
 

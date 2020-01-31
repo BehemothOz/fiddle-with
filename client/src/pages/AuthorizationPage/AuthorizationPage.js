@@ -6,8 +6,6 @@ import { AuthActionsContext } from '../../contexts/AuthContext';
 import { LOGIN } from '../../api/keys';
 
 const AuthorizationPage = () => {
-    console.count('<AuthorizationPage /> RENDER');
-
     const actions = useContext(AuthActionsContext);
 
     const handleSubmitSuccess = useCallback((response) => {
