@@ -16,9 +16,7 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                }
+                use: ['babel-loader']
             },
             {
                 test: /\.(png|jpg|svg|gif)$/,
@@ -28,13 +26,12 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './public/index.html',
-            favicon: './public/favicon.ico',
             title: 'Fiddle With',
+            template: path.resolve(__dirname, '../public/index.html'),
+            favicon: path.resolve(__dirname, '../public/favicon.ico')
         }),
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV) || 'production',
-            // 'process.env.DEBUG': JSON.stringify(process.env.DEBUG)
+            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV) || 'production'
         })
     ]
 }
