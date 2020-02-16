@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-console.log(JSON.stringify(process.env.NODE_ENV))
+
 module.exports = {
     context: path.resolve(__dirname, '../'),
     entry: {
@@ -28,7 +28,9 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './public/index.html'
+            template: './public/index.html',
+            favicon: './public/favicon.ico',
+            title: 'Fiddle With',
         }),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV) || 'production',
