@@ -6,11 +6,10 @@ module.exports = merge(baseConfig, {
     mode: 'development',
     devtool: 'inline-source-map',
     devServer: {
-        contentBase: path.join(__dirname, '../build'),
+        contentBase: path.resolve(__dirname, '../build'),
         compress: true,
         port: 4000,
         historyApiFallback: true,
-        // open: true,
-        hot: true
+        open: true
     }
 })

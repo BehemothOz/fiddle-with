@@ -8,8 +8,9 @@ module.exports = {
         main: './src/index.js'
     },
     output: {
-        filename: '[name].bundle.js',
-        path: path.resolve(__dirname, '../build')
+        filename: '[name].[contenthash].js',
+        path: path.resolve(__dirname, '../build'),
+        publicPath: '/'
     },
     module: {
         rules: [
