@@ -2,6 +2,7 @@ import React, { useCallback, useContext } from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
+import Button from '@material-ui/core/Button';
 import Form from '../Form';
 import Transition from '../Transition';
 import useSubmit from '../../../../hooks/async/useSubmit';
@@ -29,9 +30,9 @@ const FormContainer = React.memo(props => {
     return (
         <Dialog
             open={visible}
-            maxWidth="xs"
             onClose={actions.closeModal}
             TransitionComponent={Transition}
+            fullScreen
         >
             <DialogTitle>{`${mode === EDIT ? 'Update' : 'Create'} dictionaty`}</DialogTitle>
             <DialogContent>
@@ -41,6 +42,7 @@ const FormContainer = React.memo(props => {
                     onSubmit={submit}
                     onSubmitSuccess={handleSubmitSuccess}
                 />
+                <Button onClick={actions.closeModal}>Close</Button>
             </DialogContent>
         </Dialog>
     )
