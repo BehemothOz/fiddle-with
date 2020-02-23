@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 const registrationRouter = require('./routes/registration');
 const loginRouter = require('./routes/login');
 const dictionaryRouter = require('./routes/dictionary');
-const wordRouter = require('./routes/word');
+const translationRouter = require('./routes/translation');
 
 const validationHandlerError = require('./errors/validationHandlerError');
 const globalHandlerError = require('./errors/globalHandlerError');
@@ -31,8 +31,8 @@ app.use(express.json());
 // Routes
 app.use('/registration', registrationRouter);
 app.use('/login', loginRouter);
-app.use('/dictionary', dictionaryRouter);
-app.use('/word', wordRouter)
+app.use('/dictionaries', dictionaryRouter);
+app.use('/translation', translationRouter)
 
 // Validation and global error handlers
 app.use(validationHandlerError);

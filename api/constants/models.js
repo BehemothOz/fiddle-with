@@ -1,4 +1,5 @@
 module.exports = {
     USER: 'user',
-    DICTIONARY: 'dictionary'
+    DICTIONARY: 'dictionary',
+    TRANSLATION: 'translation'
 };
