@@ -4,10 +4,10 @@ import Rows from './components/Rows';
 import FormContainer from './components/FormContainer';
 import AddButton from './components/AddButton';
 import useFetch from '../../hooks/async/useFetch';
-import { DICTIONARY_GET } from '../../api/keys';
+import { DICTIONARIES_GET } from '../../api/keys';
 
 const Dictionaries = () => {
-    const [state, request] = useFetch({ key: DICTIONARY_GET });
+    const [state, request] = useFetch({ key: DICTIONARIES_GET });
     useEffect(() => { request() }, [request]);
 
     const { response, fetching, errors } = state;

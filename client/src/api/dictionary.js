@@ -1,4 +1,12 @@
-import { LOGIN, REGISTRATION, DICTIONARY_GET, DICTIONARY_POST, WORD_GET, WORD_POST } from './keys';
+import {
+    LOGIN,
+    REGISTRATION,
+    DICTIONARIES_GET,
+    DICTIONARY_GET,
+    DICTIONARY_POST,
+    TRANSLATION_GET,
+    TRANSLATION_POST
+} from './keys';
 import { arrayState, objectState, authState } from './state';
 import api from './index';
 
@@ -7,8 +15,9 @@ const { get, post } = api;
 export default {
     [LOGIN]: { method: post, url: '/login', state: authState },
     [REGISTRATION]: { method: post, url: '/registration', state: authState },
-    [DICTIONARY_GET]: { method: get, url: '/dictionary', state: arrayState },
-    [DICTIONARY_POST]: { method: post, url: '/dictionary', state: objectState },
-    [WORD_GET]: { method: get, url: '/word', state: arrayState },
-    [WORD_POST]: { method: post, url: '/word', state: objectState }
+    [DICTIONARIES_GET]: { method: get, url: '/dictionaries', state: arrayState },
+    [DICTIONARY_GET]: { method: get, url: '/dictionaries', state: objectState },
+    [DICTIONARY_POST]: { method: post, url: '/dictionaries', state: objectState },
+    [TRANSLATION_GET]: { method: get, url: '/translation', state: arrayState },
+    [TRANSLATION_POST]: { method: post, url: '/translation', state: objectState }
 }
